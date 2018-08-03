@@ -8,6 +8,11 @@
         </span>
         <system-information></system-information>
       </div>
+      <div>
+        <el-button  type="button" size="small" round @click="jump()">Create</el-button>
+      </div>
+
+
 
       <div class="right-side">
         <div class="doc">
@@ -36,8 +41,11 @@
     name: 'landing-page',
     components: { SystemInformation },
     methods: {
+      jump () {
+        console.log('Here')
+        this.$router.push({path: '/accountname'})
+      },
       open (link) {
-        // this.$db.users.loadDatabase()
         var doc = {
           hello: 'world'
         }
