@@ -43,7 +43,7 @@
     methods: {
       jump () {
         console.log('Here')
-        this.$router.push({path: '/accountname'})
+        this.$router.push({path: '/menu'})
       },
       open (link) {
         var doc = {

@@ -52,7 +52,7 @@ export default {
   methods: {
     change () {
       console.log(this.input)
-      this.$router.push({path: '/landing-page'})
+      this.$router.push({path: '/'})
     }
   }
 }
