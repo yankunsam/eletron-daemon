@@ -22,6 +22,12 @@
       width="180"
       align="center">
     </el-table-column>
+    <el-table-column
+      prop="owner"
+      label="合约账户"
+      width="180"
+      align="center">
+    </el-table-column>
   </el-table>
 </div>
 </template>
@@ -53,13 +59,18 @@
         table: 'actinfolist'
       }
       var tableData2 = []
-      var tem = {}
       this.$eos.getTableRows(actinfolistpara).then(function (rel) {
-        var item = rel.rows[0].token[0]
-        tem.token = item.token
-        tem.maximum_supply = item.maximum_supply
-        tem.issuer = item.issuer
-        tableData2.push(tem)
+        for (var accountitem in rel.rows) {
+          for (var tokenitem in (rel.rows[accountitem]).token) {
+            var item = rel.rows[accountitem].token[tokenitem]
+            var tem = {}
+            tem.token = item.token
+            tem.maximum_supply = item.maximum_supply
+            tem.issuer = item.issuer
+            tem.owner = rel.rows[accountitem].owner
+            tableData2.push(tem)
+          }
+        }
       })
       return {
         tableData2
