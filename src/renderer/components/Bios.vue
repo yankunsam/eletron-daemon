@@ -58,6 +58,13 @@
             this.$eos.setcode('eosio', 0, 0, wasm).then(rel => console.log(rel))
             this.$eos.setabi('eosio', JSON.parse(abi)).then(rel => console.log(rel))
             break
+          case 'msig':
+            console.log('In msig')
+            wasm = this.$fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.msig/eosio.msig.wasm`)
+            abi = this.$fs.readFileSync(`/Users/sam/Public/oasis-eos/oasis/contracts/eosio.msig/eosio.msig.abi`)
+            this.$eos.setcode('eosio.msig', 0, 0, wasm).then(rel => console.log(rel))
+            this.$eos.setabi('eosio.msig', JSON.parse(abi)).then(rel => console.log(rel))
+            break
           default:
         }
       }
