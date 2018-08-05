@@ -1,7 +1,8 @@
 <template>
   <div>
+    <el-button type="text" @click="refesh()">刷新列表</el-button>
   <el-table
-    :data="tableData2"
+    :data="tableData"
     style="width: 100%"
     :row-class-name="tableRowClassName">
     <el-table-column
@@ -37,9 +38,6 @@
 <script>
   export default {
     name: 'act-info-list',
-    props: {
-      needed: true
-    },
     methods: {
       tableRowClassName ({row, rowIndex}) {
         if (rowIndex === 0) {
@@ -48,18 +46,27 @@
           return 'success-row'
         }
         return ''
+      },
+      refesh () {
+        console.log('refesh now')
       }
     },
     data () {
-      console.log('get the data')
+      console.log('get the data ')
+      return {
+        tableData: []
+      }
+    },
+    created () {
+      console.log('created')
       var actinfolistpara = {
         json: true,
         code: 'sam',
         scope: 'sam',
         table: 'actinfolist'
       }
-      var tableData2 = []
-      this.$eos.getTableRows(actinfolistpara).then(function (rel) {
+      // var tableData = []
+      this.$eos.getTableRows(actinfolistpara).then(rel => {
         for (var accountitem in rel.rows) {
           for (var tokenitem in (rel.rows[accountitem]).token) {
             var item = rel.rows[accountitem].token[tokenitem]
@@ -68,13 +75,10 @@
             tem.maximum_supply = item.maximum_supply
             tem.issuer = item.issuer
             tem.owner = rel.rows[accountitem].owner
-            tableData2.push(tem)
+            this.tableData.push(tem)
           }
         }
       })
-      return {
-        tableData2
-      }
     }
   }
 </script>
