@@ -11,7 +11,9 @@
     <el-tab-pane label="EOS主网启动" name="bios">
       <bios></bios>
     </el-tab-pane>
-    <el-tab-pane label="账户" name="third">角色管理</el-tab-pane>
+    <el-tab-pane label="账户" name="third">
+      <system-account></system-account>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -23,12 +25,14 @@
 <script>
   import ActInfoList from './ActInfoList'
   import Bios from './Bios'
+  import SystemAccount from './SystemAccount'
 
   export default {
     name: 'layout',
     components: {
       ActInfoList,
-      Bios
+      Bios,
+      SystemAccount
     },
     data () {
       return {

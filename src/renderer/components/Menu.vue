@@ -55,11 +55,11 @@
 </style>
 
 <script>
-import AccountName from './AccountName'
+import SystemAccount from './SystemAccount'
 export default {
   name: 'menu',
   components: {
-    AccountName
+    SystemAccount
   },
   data () {
     return {

@@ -6,9 +6,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/accountname',
-      name: 'account-name',
-      component: require('@/components/AccountName').default
+      path: '/systemaccount',
+      name: 'system-account',
+      component: require('@/components/SystemAccount').default
     },
     {
       path: '/layout',
