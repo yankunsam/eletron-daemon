@@ -32,6 +32,7 @@
 
 <script>
   export default {
+    name: 'system-information',
     data () {
       return {
         electron: process.versions['atom-shell'],
