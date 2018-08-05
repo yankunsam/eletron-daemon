@@ -8,7 +8,9 @@
     <el-tab-pane label="合约列表" name="contracttable">
       <act-info-list v-bind:needed="false"></act-info-list>
     </el-tab-pane>
-    <el-tab-pane label="区块浏览器" name="second">配置管理</el-tab-pane>
+    <el-tab-pane label="EOS主网启动" name="bios">
+      <bios></bios>
+    </el-tab-pane>
     <el-tab-pane label="账户" name="third">角色管理</el-tab-pane>
   </el-tabs>
 </el-main>
@@ -20,10 +22,14 @@
 </template>
 <script>
   import ActInfoList from './ActInfoList'
+  import Bios from './Bios'
 
   export default {
     name: 'layout',
-    components: { ActInfoList },
+    components: {
+      ActInfoList,
+      Bios
+    },
     data () {
       return {
         activeName: 'second'

@@ -12,7 +12,12 @@ import Eos from 'oasisjs'
 Vue.use(ElementUI)
 
 var config = {
-  chainId: 'c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83'
+  chainId: 'c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83',
+  keyProvider: ['5HrRFWkaGjnRd4kEPtgD1QrbuBQoH347UpjjDa7bTwXpzPcbm7i'],
+  expireInSeconds: 60,
+  broadcast: true,
+  sign: true
+
 }
 var eos = Eos(config)
 
@@ -22,6 +27,7 @@ Vue.config.productionTip = false
 Vue.prototype.$db = db
 Vue.prototype.$fs = fs
 Vue.prototype.$eos = eos
+Vue.prototype.$eosconfig = config
 
 /* eslint-disable no-new */
 new Vue({
