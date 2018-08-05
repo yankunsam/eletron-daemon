@@ -49,6 +49,27 @@
       },
       refesh () {
         console.log('refesh now')
+        var actinfolistpara = {
+          json: true,
+          code: 'sam',
+          scope: 'sam',
+          table: 'actinfolist'
+        }
+        this.tableData = []
+        // var tableData = []
+        this.$eos.getTableRows(actinfolistpara).then(rel => {
+          for (var accountitem in rel.rows) {
+            for (var tokenitem in (rel.rows[accountitem]).token) {
+              var item = rel.rows[accountitem].token[tokenitem]
+              var tem = {}
+              tem.token = item.token
+              tem.maximum_supply = item.maximum_supply
+              tem.issuer = item.issuer
+              tem.owner = rel.rows[accountitem].owner
+              this.tableData.push(tem)
+            }
+          }
+        })
       }
     },
     data () {
@@ -59,26 +80,7 @@
     },
     created () {
       console.log('created')
-      var actinfolistpara = {
-        json: true,
-        code: 'sam',
-        scope: 'sam',
-        table: 'actinfolist'
-      }
-      // var tableData = []
-      this.$eos.getTableRows(actinfolistpara).then(rel => {
-        for (var accountitem in rel.rows) {
-          for (var tokenitem in (rel.rows[accountitem]).token) {
-            var item = rel.rows[accountitem].token[tokenitem]
-            var tem = {}
-            tem.token = item.token
-            tem.maximum_supply = item.maximum_supply
-            tem.issuer = item.issuer
-            tem.owner = rel.rows[accountitem].owner
-            this.tableData.push(tem)
-          }
-        }
-      })
+      this.refesh()
     }
   }
 </script>
