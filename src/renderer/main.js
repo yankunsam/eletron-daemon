@@ -13,11 +13,10 @@ Vue.use(ElementUI)
 
 var config = {
   chainId: 'c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83',
-  keyProvider: ['5HrRFWkaGjnRd4kEPtgD1QrbuBQoH347UpjjDa7bTwXpzPcbm7i'],
+  keyProvider: ['5HrRFWkaGjnRd4kEPtgD1QrbuBQoH347UpjjDa7bTwXpzPcbm7i', '5HraW3vTnf6S3QC9br3pwkvzJBddG5yVPY5d3LTRtsbLWubVVvh'],
   expireInSeconds: 60,
   broadcast: true,
   sign: true
-
 }
 var eos = Eos(config)
 
@@ -28,6 +27,7 @@ Vue.prototype.$db = db
 Vue.prototype.$fs = fs
 Vue.prototype.$eos = eos
 Vue.prototype.$eosconfig = config
+Vue.prototype.$actor = 'sam'
 
 /* eslint-disable no-new */
 new Vue({

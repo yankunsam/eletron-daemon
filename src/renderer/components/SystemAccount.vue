@@ -1,14 +1,20 @@
 <template>
   <div>
-<el-form :inline="true" :model="formInline" class="demo-form-inline" label-position="top">
-  <el-form-item label="owner key">
-    <el-input v-model="formInline.user" placeholder="请输入账户owner key"></el-input>
+<el-radio-group v-model="labelPosition" size="small">
+  <el-radio-button label="left">左对齐</el-radio-button>
+  <el-radio-button label="right">右对齐</el-radio-button>
+  <el-radio-button label="top">顶部对齐</el-radio-button>
+</el-radio-group>
+<div style="margin: 20px;"></div>
+<el-form :label-position="labelPosition" label-width="80px" :model="newAccountInfo">
+  <el-form-item label="Owner Key">
+    <el-input v-model="newAccountInfo.ownerkey"></el-input>
   </el-form-item>
-  <el-form-item label="系统账户">
-    <el-select v-model="formInline.region" placeholder="系统账户">
-      <el-option label="eosio.token" value="shanghai"></el-option>
-      <el-option label="eosio.msig" value="beijing"></el-option>
-    </el-select>
+  <el-form-item label="Active Key">
+    <el-input v-model="newAccountInfo.activekey"></el-input>
+  </el-form-item>
+  <el-form-item label="账户名">
+    <el-input v-model="newAccountInfo.accountname"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="onSubmit">创建</el-button>
@@ -18,17 +24,95 @@
 </template>
 <script>
   export default {
+    name: 'systemaccount',
     data () {
       return {
-        formInline: {
-          user: '',
-          region: ''
+        labelPosition: 'right',
+        newAccountInfo: {
+          ownerkey: '',
+          activekey: '',
+          accountname: ''
         }
       }
     },
     methods: {
       onSubmit () {
-        console.log('submit!')
+        console.log(this.newAccountInfo)
+        this.$eos.transaction(
+          {
+            actions: [
+              {
+                account: 'eosio',
+                name: 'newaccount',
+                authorization: [
+                  {
+                    actor: this.$actor,
+                    premission: 'active'
+                  }
+                ],
+                data: {
+                  'creator': this.$actor,
+                  'name': this.newAccountInfo.accountname,
+                  'owner': {
+                    'threshold': 1,
+                    'keys': [
+                      {
+                        'key': this.newAccountInfo.ownerkey,
+                        'weight': 1
+                      }
+                    ],
+                    'accounts': [],
+                    'waits': []
+                  },
+                  'active': {
+                    'threshold': 1,
+                    'keys': [
+                      {
+                        'key': this.newAccountInfo.activekey,
+                        'weight': 1
+                      }
+                    ],
+                    'accounts': [],
+                    'waits': []
+                  }
+                }
+              },
+              {
+                'account': 'eosio',
+                'name': 'buyrambytes',
+                'authorization': [
+                  {
+                    'actor': this.$actor,
+                    'permission': 'active'
+                  }
+                ],
+                'data': {
+                  'payer': this.$actor,
+                  'receiver': this.newAccountInfo.accountname,
+                  'bytes': 102400000
+                }
+              },
+              {
+                'account': 'eosio',
+                'name': 'delegatebw',
+                'authorization': [
+                  {
+                    'actor': this.$actor,
+                    'permission': 'active'
+                  }
+                ],
+                'data': {
+                  'from': this.$actor,
+                  'receiver': this.newAccountInfo.accountname,
+                  'stake_net_quantity': '1.0000 EOS',
+                  'stake_cpu_quantity': '1.0000 EOS',
+                  'transfer': 1
+                }
+              }
+
+            ]
+          }
+        ).then(rel => console.log(rel))
       }
     }
   }
