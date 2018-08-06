@@ -6,11 +6,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/systemaccount',
-      name: 'system-account',
-      component: require('@/components/SystemAccount').default
-    },
-    {
       path: '/layout',
       name: 'layout',
       component: require('@/components/Layout').default
@@ -18,12 +13,22 @@ export default new Router({
     {
       path: '/menu',
       name: 'menu',
-      component: require('@/components/Menu').default
+      component: require('@/components/Menu').default,
+      children: [
+        {
+          path: 'systemaccount',
+          component: require('@/components/SystemAccount').default
+        },
+        {
+          path: 'layout',
+          component: require('@/components/Layout').default
+        }
+      ]
     },
     {
       path: '/',
-      name: 'layout',
-      component: require('@/components/Layout').default
+      name: 'menu',
+      component: require('@/components/Menu').default
     },
     {
       path: '*',
