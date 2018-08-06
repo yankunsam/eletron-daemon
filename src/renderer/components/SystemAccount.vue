@@ -38,6 +38,7 @@
     methods: {
       onSubmit () {
         console.log(this.newAccountInfo)
+        console.log(this.$actor)
         this.$eos.transaction(
           {
             actions: [
@@ -47,66 +48,66 @@
                 authorization: [
                   {
                     actor: this.$actor,
-                    premission: 'active'
+                    permission: 'active'
                   }
                 ],
                 data: {
-                  'creator': this.$actor,
-                  'name': this.newAccountInfo.accountname,
-                  'owner': {
-                    'threshold': 1,
-                    'keys': [
+                  creator: this.$actor,
+                  name: this.newAccountInfo.accountname,
+                  owner: {
+                    threshold: 1,
+                    keys: [
                       {
-                        'key': this.newAccountInfo.ownerkey,
-                        'weight': 1
+                        key: this.newAccountInfo.ownerkey,
+                        weight: 1
                       }
                     ],
-                    'accounts': [],
-                    'waits': []
+                    accounts: [],
+                    waits: []
                   },
-                  'active': {
-                    'threshold': 1,
-                    'keys': [
+                  active: {
+                    threshold: 1,
+                    keys: [
                       {
-                        'key': this.newAccountInfo.activekey,
-                        'weight': 1
+                        key: this.newAccountInfo.activekey,
+                        weight: 1
                       }
                     ],
-                    'accounts': [],
-                    'waits': []
+                    accounts: [],
+                    waits: []
                   }
                 }
               },
               {
-                'account': 'eosio',
-                'name': 'buyrambytes',
-                'authorization': [
+                account: 'eosio',
+                name: 'buyrambytes',
+                authorization: [
                   {
-                    'actor': this.$actor,
-                    'permission': 'active'
+                    actor: this.$actor,
+                    permission: 'active'
                   }
                 ],
-                'data': {
-                  'payer': this.$actor,
-                  'receiver': this.newAccountInfo.accountname,
-                  'bytes': 102400000
+                data: {
+                  payer: this.$actor,
+                  receiver: this.newAccountInfo.accountname,
+                  bytes: 102400000
                 }
               },
               {
-                'account': 'eosio',
-                'name': 'delegatebw',
-                'authorization': [
+                account: 'eosio',
+                name: 'delegatebw',
+                authorization: [
                   {
-                    'actor': this.$actor,
-                    'permission': 'active'
+                    actor: this.$actor,
+                    permission: 'active'
                   }
                 ],
-                'data': {
-                  'from': this.$actor,
-                  'receiver': this.newAccountInfo.accountname,
-                  'stake_net_quantity': '1.0000 EOS',
-                  'stake_cpu_quantity': '1.0000 EOS',
-                  'transfer': 1
+                data: {
+                  from: this.$actor,
+                  receiver: this.newAccountInfo.accountname,
+                  stake_net_quantity: '1.0000 EOS',
+                  stake_cpu_quantity: '1.0000 EOS',
+                  transfer: 1
                 }
               }
 
