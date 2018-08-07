@@ -14,6 +14,9 @@
     <el-tab-pane label="账户" name="third">
       <system-account></system-account>
     </el-tab-pane>
+    <el-tab-pane label="转账" name="transfer">
+      <transfer></transfer>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -26,13 +29,15 @@
   import ActInfoList from './ActInfoList'
   import Bios from './Bios'
   import SystemAccount from './SystemAccount'
+  import Transfer from './Transfer'
 
   export default {
     name: 'layout',
     components: {
       ActInfoList,
       Bios,
-      SystemAccount
+      SystemAccount,
+      Transfer
     },
     data () {
       return {

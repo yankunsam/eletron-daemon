@@ -13,6 +13,7 @@ Vue.use(ElementUI)
 
 var config = {
   chainId: 'c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83',
+  httpEndpoint: 'http://124.127.156.41:8888',
   keyProvider: ['5HrRFWkaGjnRd4kEPtgD1QrbuBQoH347UpjjDa7bTwXpzPcbm7i', '5HraW3vTnf6S3QC9br3pwkvzJBddG5yVPY5d3LTRtsbLWubVVvh'],
   expireInSeconds: 60,
   broadcast: true,
@@ -28,6 +29,7 @@ Vue.prototype.$fs = fs
 Vue.prototype.$eos = eos
 Vue.prototype.$eosconfig = config
 Vue.prototype.$actor = 'sam'
+console.log('In main.js')
 
 /* eslint-disable no-new */
 new Vue({
