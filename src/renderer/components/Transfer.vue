@@ -38,7 +38,7 @@ export default {
         accountReceive: '',
         asset: '',
         memo: '',
-        balance: '1.0000 EOS'
+        balance: ''
       }
     }
   },
@@ -62,7 +62,10 @@ export default {
       }).then(rel => console.log(rel))
     },
     getBalance () {
-      console.log('get balance')
+      if (this.transferParameter.contractAccount === '') {
+        console.log('合约账户为空,默认为eosio.token')
+        this.transferParameter.contractAccount = 'eosio.token'
+      }
       this.$eos.getCurrencyBalance(this.transferParameter.contractAccount, this.$actor, 'EOS').then(rel => {
         this.transferParameter.balance = rel[0]
       })
