@@ -4,7 +4,7 @@
     <el-header>Header</el-header>
     <el-container>
       <el-aside width="200px">
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+        <el-radio-group v-model="isCollapse" style="margin-bottom: 5px;">
           <el-radio-button :label="false">展开</el-radio-button>
           <el-radio-button :label="true">收起</el-radio-button>
         </el-radio-group>
@@ -84,7 +84,7 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 160px;
+    line-height: 260px;
   }
 
   body > .el-container {

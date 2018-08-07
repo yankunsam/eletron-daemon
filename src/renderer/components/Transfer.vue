@@ -5,8 +5,9 @@
     <el-radio-button label="right">右对齐</el-radio-button>
     <el-radio-button label="top">顶部对齐</el-radio-button>
   </el-radio-group>
-  <div style="margin: 20px;"></div>
-  <el-button type="primary" @click="getBalance">最新余额</el-button> <p>账户余额： {{ transferParameter.balance }}</p>
+  <div>
+  <el-button  type="text" @click="getBalance">账户: {{ this.$actor  }}  余额： {{ transferParameter.balance }}</el-button>
+</div>
   <el-form :label-position="labelPosition" label-width="80px" :model="transferParameter">
     <el-form-item label="合约账户">
       <el-input v-model="transferParameter.contractAccount"></el-input>
@@ -73,3 +74,32 @@ export default {
   }
 }
 </script>
+
+<style>
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 1px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+</style>

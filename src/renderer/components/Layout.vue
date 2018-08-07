@@ -17,6 +17,9 @@
     <el-tab-pane label="转账" name="transfer">
       <transfer></transfer>
     </el-tab-pane>
+    <el-tab-pane label="Token创建" name="newtoken">
+      <newtoken></newtoken>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -30,6 +33,7 @@
   import Bios from './Bios'
   import SystemAccount from './SystemAccount'
   import Transfer from './Transfer'
+  import Newtoken from './Newtoken'
 
   export default {
     name: 'layout',
@@ -37,7 +41,8 @@
       ActInfoList,
       Bios,
       SystemAccount,
-      Transfer
+      Transfer,
+      Newtoken
     },
     data () {
       return {
