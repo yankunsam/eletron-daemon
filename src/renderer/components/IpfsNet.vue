@@ -20,12 +20,14 @@
     <el-input v-model="ipfsNodeParameter.clusterPath"></el-input>
   </el-form-item>
   <div>
-  <el-form-item>
+    <el-button-group>
+
     <el-button type="primary" @click="onSubmit">加入</el-button>
-  </el-form-item>
-  <el-form-item>
+
+
     <el-button type="primary" @click="daemonStop">停止</el-button>
-  </el-form-item>
+  
+  </el-button-group>
 </div>
 </el-form>
 </div>
