@@ -33,7 +33,7 @@
 </template>
 <script>
   export default {
-    name: 'newtoken',
+    name: 'new-token',
     data () {
       return {
         labelPosition: 'right',

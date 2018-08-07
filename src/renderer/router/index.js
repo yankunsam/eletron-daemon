@@ -22,6 +22,10 @@ export default new Router({
         {
           path: 'layout',
           component: require('@/components/Layout').default
+        },
+        {
+          path: 'ipfsdashboard',
+          component: require('@/components/IpfsDashBoard').default
         }
       ]
     },

@@ -18,7 +18,7 @@
       <transfer></transfer>
     </el-tab-pane>
     <el-tab-pane label="Token创建" name="newtoken">
-      <newtoken></newtoken>
+      <new-token></new-token>
     </el-tab-pane>
   </el-tabs>
 </el-main>
@@ -33,7 +33,7 @@
   import Bios from './Bios'
   import SystemAccount from './SystemAccount'
   import Transfer from './Transfer'
-  import Newtoken from './Newtoken'
+  import NewToken from './NewToken'
 
   export default {
     name: 'layout',
@@ -42,7 +42,7 @@
       Bios,
       SystemAccount,
       Transfer,
-      Newtoken
+      NewToken
     },
     data () {
       return {

@@ -25,6 +25,7 @@
             <el-submenu index="1-4">
               <span slot="title">社区云</span>
               <el-menu-item index="1-4-1">选项1</el-menu-item>
+              <el-menu-item index="/menu/ipfsdashboard"> IPFS</el-menu-item>
             </el-submenu>
           </el-submenu>
         </el-menu>
