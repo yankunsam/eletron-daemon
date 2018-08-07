@@ -9,6 +9,7 @@ import db from './datastore'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Eos from 'oasisjs'
+import cmd from 'node-cmd'
 Vue.use(ElementUI)
 
 var config = {
@@ -29,6 +30,11 @@ Vue.prototype.$fs = fs
 Vue.prototype.$eos = eos
 Vue.prototype.$eosconfig = config
 Vue.prototype.$actor = 'sam'
+Vue.prototype.$cmd = cmd
+Vue.prototype.$ipfsinit = 'python /Users/sam/Public/ipfs-daemon/run.py init'
+Vue.prototype.$ipfsmanageconfig = 'python /Users/sam/Public/ipfs-daemon/run.py manageconfig'
+Vue.prototype.$ipfsrun = 'python /Users/sam/Public/ipfs-daemon/run.py run'
+Vue.prototype.$ipfsstop = 'python /Users/sam/Public/ipfs-daemon/run.py stop'
 console.log('In main.js')
 
 /* eslint-disable no-new */
