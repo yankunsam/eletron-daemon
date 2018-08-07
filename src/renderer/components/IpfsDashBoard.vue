@@ -4,18 +4,22 @@
     <el-tab-pane label="节点加入" name="nodeJoin">
       <ipfs-net></ipfs-net>
     </el-tab-pane>
-    <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-    <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-    <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+    <el-tab-pane label="文件上传" name="fileadd">
+      <file-add></file-add>
+    </el-tab-pane>
+    <el-tab-pane label="文件下载" name="fileget">角色管理</el-tab-pane>
+    <el-tab-pane label="节点监控" name="monitor">定时任务补偿</el-tab-pane>
   </el-tabs>
 </div>
 </template>
 <script>
 import IpfsNet from './IpfsNet'
+import FileAdd from './FileAdd'
 export default {
   name: 'ipfs-dash-board',
   components: {
-    IpfsNet
+    IpfsNet,
+    FileAdd
   },
   data () {
     return {
