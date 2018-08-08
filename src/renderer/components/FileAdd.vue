@@ -1,13 +1,16 @@
 <template>
   <div>
 <el-form :inline="true" :model="fileForm" class="demo-form-inline">
-  <el-form-item label="待上传文件路径">
+  <el-form-item>
     <el-input v-model="fileForm.path" placeholder="文件绝对路径"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="onSubmit">上传</el-button>
   </el-form-item>
 </el-form>
+<div>
+  <p>文件Hash: {{ fileForm.results }} </p>
+</div>
 </div>
 </template>
 <script>
@@ -16,13 +19,23 @@
     data () {
       return {
         fileForm: {
-          path: '/Users/sam/Public/ipfs-daemon/run.py'
+          path: '/Users/sam/Documents/test.log',
+          results: ''
         }
       }
     },
     methods: {
       onSubmit () {
-        console.log('submit!')
+        var filebuffer = this.$fs.readFileSync(this.fileForm.path)
+        var files = [{
+          path: this.fileForm.path,
+          content: filebuffer
+        }
+        ]
+        this.$ipfsapi.files.add(files, (err, files) => {
+          this.fileForm.results = files[0].hash
+          console.log('files add err', err)
+        })
       }
     }
   }

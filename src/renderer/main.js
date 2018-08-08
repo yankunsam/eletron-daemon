@@ -10,6 +10,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Eos from 'oasisjs'
 import cmd from 'node-cmd'
+import ipfsAPI from 'ipfs-api'
 Vue.use(ElementUI)
 
 var config = {
@@ -31,10 +32,14 @@ Vue.prototype.$eos = eos
 Vue.prototype.$eosconfig = config
 Vue.prototype.$actor = 'sam'
 Vue.prototype.$cmd = cmd
-Vue.prototype.$ipfsinit = 'python /Users/sam/Public/ipfs-daemon/run.py init'
-Vue.prototype.$ipfsmanageconfig = 'python /Users/sam/Public/ipfs-daemon/run.py manageconfig'
-Vue.prototype.$ipfsrun = 'python /Users/sam/Public/ipfs-daemon/run.py run'
-Vue.prototype.$ipfsstop = 'python /Users/sam/Public/ipfs-daemon/run.py stop'
+Vue.prototype.$ipfsinit = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsinit'
+Vue.prototype.$clusterinit = 'python /Users/sam/Public/ipfs-daemon/run.py clusterinit'
+Vue.prototype.$ipfsmanageconfig = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsmanageconfig'
+Vue.prototype.$ipfsrun = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsrun'
+Vue.prototype.$clusterrun = 'python /Users/sam/Public/ipfs-daemon/run.py clusterrun'
+Vue.prototype.$ipfsstop = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsstop'
+Vue.prototype.$clusterstop = 'python /Users/sam/Public/ipfs-daemon/run.py clusterstop'
+Vue.prototype.$ipfsapi = ipfsAPI('localhost', '5001', {protocol: 'http'})
 console.log('In main.js')
 
 /* eslint-disable no-new */
