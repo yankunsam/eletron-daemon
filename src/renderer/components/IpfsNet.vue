@@ -76,12 +76,22 @@
         })
       },
       ipfsManageConfig () {
-        var cmdlist = this.$ipfsmanageconfig + ' --key ' + 'Bootstrap ' + '--value ' + '\'["' + this.ipfsNodeParameter.bootstrap + '"]\''
-        console.log('ipfsmanageconfig: ', cmdlist)
-        this.$cmd.get(cmdlist, function (err, data, stderr) {
-          console.log('ipfs manageconfig return message', data)
-          console.log(err)
-        })
+        if (this.ipfsNodeParameter.bootstrap) {
+          var cmdlist = this.$ipfsmanageconfig + ' --key ' + 'Bootstrap ' + '--value ' + '\'["' + this.ipfsNodeParameter.bootstrap + '"]\''
+          console.log('ipfsmanageconfig: ', cmdlist)
+          this.$cmd.get(cmdlist, function (err, data, stderr) {
+            console.log('ipfs manageconfig return message', data)
+            console.log(err)
+          })
+        } else {
+          console.log('bootstrap is None')
+          cmdlist = this.$ipfsmanageconfig + ' --key ' + 'Bootstrap ' + '--value ' + '\'[]\''
+          console.log('ipfsmanageconfig: ', cmdlist)
+          this.$cmd.get(cmdlist, function (err, data, stderr) {
+            console.log('ipfs manageconfig return message', data)
+            console.log(err)
+          })
+        }
       },
       ipfsRun () {
         this.$cmd.get(this.$ipfsrun, function (err, data, stderr) {
