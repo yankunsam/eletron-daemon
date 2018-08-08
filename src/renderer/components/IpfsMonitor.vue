@@ -7,7 +7,7 @@
     :row-class-name="tableRowClassName">
     <el-table-column
       prop="peers"
-      label="peers"
+      label="已连接节点"
       width="680">
     </el-table-column>
   </el-table>
@@ -42,22 +42,19 @@
           if (err) {
             throw err
           }
-          console.log(peerInfos)
+          for (var item in peerInfos) {
+            // console.log(peerInfos[item].peer._idB58String)
+            var temp = {
+              peers: peerInfos[item].peer._idB58String
+            }
+            this.peersInfo.push(temp)
+          }
         })
       }
     },
     data () {
       return {
-        peersInfo: [{
-          peers: '/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ'
-        },
-        {
-          peers: '/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ'
-        },
-        {
-          peers: '/ip4/104.131.131.82/tcp/4001/ipfs/QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ'
-        }
-        ]
+        peersInfo: []
       }
     }
   }
