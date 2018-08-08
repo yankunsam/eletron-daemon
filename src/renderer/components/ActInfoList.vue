@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="text" @click="refrsh()">刷新列表</el-button>
+    <el-button type="text" @click="refresh()">刷新列表</el-button>
   <el-table
     :data="tableData"
     style="width: 100%"
