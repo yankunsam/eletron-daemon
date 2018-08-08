@@ -46,7 +46,8 @@
 </el-form-item>
 <el-form-item>
 <div>
-  <el-button  type="text" @click="getClusterId">ClusterID: {{ this.clusterId  }}  </el-button>
+  <el-button  type="text" @click="getClusterId">获取ClusterID </el-button>
+  <p>  {{ this.clusterId  }}  </p>
 </div>
 </el-form-item>
 </el-form>
