@@ -26,6 +26,10 @@ export default new Router({
         {
           path: 'ipfsdashboard',
           component: require('@/components/IpfsDashBoard').default
+        },
+        {
+          path: 'exploreraccount',
+          component: require('@/components/ExplorerAccount').default
         }
       ]
     },
