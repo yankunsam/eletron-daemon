@@ -7,7 +7,9 @@
     <el-tab-pane label="文件上传" name="fileadd">
       <file-add></file-add>
     </el-tab-pane>
-    <el-tab-pane label="文件下载" name="fileget">角色管理</el-tab-pane>
+    <el-tab-pane label="文件下载" name="fileget">
+      <file-download></file-download>
+    </el-tab-pane>
     <el-tab-pane label="节点监控" name="monitor">定时任务补偿</el-tab-pane>
   </el-tabs>
 </div>
@@ -15,11 +17,13 @@
 <script>
 import IpfsNet from './IpfsNet'
 import FileAdd from './FileAdd'
+import FileDownload from './FileDownload'
 export default {
   name: 'ipfs-dash-board',
   components: {
     IpfsNet,
-    FileAdd
+    FileAdd,
+    FileDownload
   },
   data () {
     return {
