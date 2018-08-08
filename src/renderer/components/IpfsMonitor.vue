@@ -42,6 +42,7 @@
           if (err) {
             throw err
           }
+          this.peersInfo.length = 0
           for (var item in peerInfos) {
             // console.log(peerInfos[item].peer._idB58String)
             var temp = {
