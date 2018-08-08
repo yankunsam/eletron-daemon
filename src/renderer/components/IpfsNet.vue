@@ -31,6 +31,7 @@
 
   </el-button-group>
 </el-form-item>
+
 <el-form-item>
   <el-button-group>
 
@@ -38,9 +39,15 @@
   <el-button type="primary" @click="clusterInit">cluster初始化</el-button>
   <!-- <el-button type="primary" @click="ipfsManageConfig">cluster配置</el-button> -->
   <el-button type="primary" @click="clusterRun">cluster运行</el-button>
+  <el-button type="primary" @click="clusterGenesisRun">clustergenesis运行</el-button>
   <el-button type="primary" @click="clusterStop">cluster停止</el-button>
 
 </el-button-group>
+</el-form-item>
+<el-form-item>
+<div>
+  <el-button  type="text" @click="getClusterId">ClusterID: {{ this.clusterId  }}  </el-button>
+</div>
 </el-form-item>
 </el-form>
 </div>
@@ -51,6 +58,7 @@
     data () {
       return {
         labelPosition: 'right',
+        clusterId: '',
         ipfsNodeParameter: {
           bootstrap: '/ip4/124.127.156.41/tcp/9096/ipfs/QmaHXGdDRrB5yL7CJdcSjc3d1W4eDJVjyr8Dt5Z2rtZQcW',
           secret: 'd491c65d91326e9d07423da0b23355495b0fff0a4da36e2933d23e3430322a98',
@@ -92,6 +100,12 @@
           console.log(err)
         })
       },
+      clusterGenesisRun () {
+        this.$cmd.get(this.$clustergenesisrun, function (err, data, stderr) {
+          console.log(data)
+          console.log(err)
+        })
+      },
       onSubmit () {
         console.log('submit!')
       },
@@ -104,6 +118,14 @@
       clusterStop () {
         this.$cmd.get(this.$clusterstop, function (err, data, stderr) {
           console.log(data)
+          console.log(err)
+        })
+      },
+      getClusterId () {
+        this.$cmd.get(this.$getClusterId, (err, data, stderr) => {
+          console.log('In getClusterId')
+          console.log(data)
+          this.clusterId = data
           console.log(err)
         })
       }

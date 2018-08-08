@@ -85,7 +85,7 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 260px;
+    line-height: 60px;
   }
 
   body > .el-container {

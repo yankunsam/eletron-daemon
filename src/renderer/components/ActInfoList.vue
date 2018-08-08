@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="text" @click="refesh()">刷新列表</el-button>
+    <el-button type="text" @click="refrsh()">刷新列表</el-button>
   <el-table
     :data="tableData"
     style="width: 100%"
@@ -47,7 +47,7 @@
         }
         return ''
       },
-      refesh () {
+      refresh () {
         console.log('refesh now')
         var actinfolistpara = {
           json: true,
