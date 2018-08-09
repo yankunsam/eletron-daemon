@@ -2,6 +2,8 @@
   <div>
     <div>
       <el-button type="primary" @click="getAllTransaction">刷新</el-button>
+      <p> 默认获取最新 10 个document </p>
+      <p>交易总数:  {{ this.numOfDocs }}</p>
     </div>
   <el-table
     :data="transactionTable"
@@ -15,21 +17,21 @@
           <el-form-item label="Action数量">
             <span>{{ props.row.actionNum }}</span>
           </el-form-item>
-          <el-form-item label="交易 ID">
-            <span>{{ props.row.id }}</span>
-          </el-form-item>
-          <el-form-item label="店铺 ID">
-            <span>{{ props.row.shopId }}</span>
-          </el-form-item>
-          <el-form-item label="商品分类">
+          <!-- <el-form-item label="交易 ID">
+            <span>{{ props.row.trx_id }}</span>
+          </el-form-item> -->
+          <!-- <el-form-item label="区块 ID">
+            <span>{{ props.row.blockId }}</span>
+          </el-form-item> -->
+          <!-- <el-form-item label="商品分类">
             <span>{{ props.row.category }}</span>
+          </el-form-item> -->
+          <el-form-item label="block_num">
+            <span>{{ props.row.blockNum }}</span>
           </el-form-item>
-          <el-form-item label="店铺地址">
-            <span>{{ props.row.address }}</span>
-          </el-form-item>
-          <el-form-item label="商品描述">
+          <!-- <el-form-item label="商品描述">
             <span>{{ props.row.desc }}</span>
-          </el-form-item>
+          </el-form-item> -->
         </el-form>
       </template>
     </el-table-column>
@@ -38,12 +40,24 @@
       prop="trx_id">
     </el-table-column>
     <el-table-column
+      label="区块 ID"
+      prop="blockId">
+    </el-table-column>
+    <el-table-column
       label="交易时间"
       prop="createdAt">
     </el-table-column>
     <el-table-column
       label="交易发起人"
       prop="who">
+    </el-table-column>
+    <el-table-column
+      label="签名"
+      prop="signatures">
+    </el-table-column>
+    <el-table-column
+      label="签名公钥"
+      prop="signing_keys">
     </el-table-column>
   </el-table>
 </div>
@@ -69,6 +83,7 @@
     name: 'transaction-info',
     data () {
       return {
+        numOfDocs: '',
         transactionTable: []
       }
     },
@@ -79,20 +94,31 @@
             throw err
           }
           var dbo = db.db('EOS')
-          dbo.collection('transactions').find({}).limit(10).toArray((err, result) => {
+          dbo.collection('transactions').count({}, (error, numOfDocs) => {
+            if (error) {
+              throw error
+            }
+            console.log('总数', numOfDocs)
+            this.numOfDocs = numOfDocs
+          })
+          dbo.collection('transactions').find({}).sort({_id: -1}).limit(10).toArray((err, result) => {
             if (err) {
               throw err
             }
-            console.log(result)
             this.transactionTable.length = 0
+            console.log(result)
             for (var item in result) {
-              console.log(result[item].trx_id)
+              // console.log(result[item].hasOwnProperty('trx_id'))
               var temp = {
                 trx_id: result[item].trx_id,
                 createdAt: result[item].createdAt.toLocaleTimeString(),
                 who: result[item].actions[0].authorization[0].actor,
                 action: result[item].actions[0].name,
-                actionNum: result[item].actions.length
+                actionNum: result[item].actions.length,
+                blockId: result[item].block_id,
+                blockNum: result[item].block_num,
+                signatures: result[item].signatures['0'],
+                signing_keys: ('signing_keys' in result[item]) ? result[item].signing_keys['0'] : ''
               }
               this.transactionTable.push(temp)
             }
