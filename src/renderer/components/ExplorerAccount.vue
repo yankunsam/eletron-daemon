@@ -63,7 +63,6 @@ export default {
   name: 'explorer-account',
   data () {
     return {
-      balance: '',
       accountTable: []
     }
   },
@@ -71,7 +70,6 @@ export default {
     async getAccountInfo (accountDocument) {
       let balance = await this.$eos.getCurrencyBalance('eosio.token', accountDocument.name, 'EOS')
       let accountinfo = await this.$eos.getAccount(accountDocument.name)
-      console.log(accountinfo)
       var temp = {
         accountname: accountDocument.name,
         createtime: accountDocument.createdAt.toLocaleTimeString(),
@@ -103,7 +101,6 @@ export default {
       })
     },
     accountRefresh () {
-      console.log('In accountRefresh()')
       this.getAllAccount()
     }
   }
