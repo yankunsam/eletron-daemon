@@ -19,14 +19,14 @@
           <el-form-item label="交易数目">
             <span>{{ props.row.shopId }}</span>
           </el-form-item>
-          <el-form-item label="ram">
-            <span>{{ props.row.category }}</span>
+          <el-form-item label="ram使用量">
+            <span>{{ props.row.ramUsage }}</span>
           </el-form-item>
-          <el-form-item label="cpu">
-            <span>{{ props.row.address }}</span>
+          <el-form-item label="cpu使用量">
+            <span>{{ props.row.cpuUsage }}</span>
           </el-form-item>
-          <el-form-item label="net">
-            <span>{{ props.row.desc }}</span>
+          <el-form-item label="net使用量">
+            <span>{{ props.row.netUsage }}</span>
           </el-form-item>
         </el-form>
       </template>
@@ -68,13 +68,19 @@ export default {
     }
   },
   methods: {
-    async getBalance (accountDocument) {
+    async getAccountInfo (accountDocument) {
       let balance = await this.$eos.getCurrencyBalance('eosio.token', accountDocument.name, 'EOS')
+      let accountinfo = await this.$eos.getAccount(accountDocument.name)
+      console.log(accountinfo)
       var temp = {
         accountname: accountDocument.name,
         createtime: accountDocument.createdAt.toLocaleTimeString(),
         updatetime: accountDocument.updatedAt,
-        balance: balance[0]
+        balance: balance[0],
+        ramUsage: accountinfo.ram_usage,
+        cpuUsage: accountinfo.cpu_limit.used,
+        netUsage: accountinfo.net_limit.used
+
       }
       this.accountTable.push(temp)
     },
@@ -90,7 +96,7 @@ export default {
           }
           this.accountTable.length = 0
           for (var item in result) {
-            this.getBalance(result[item])
+            this.getAccountInfo(result[item])
           }
           db.close()
         })
