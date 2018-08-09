@@ -17,7 +17,7 @@
             <el-menu-item-group>
               <span slot="title">系统</span>
               <el-menu-item index="/menu/layout">主网</el-menu-item>
-              <el-menu-item index="/menu/exploreraccount">区块浏览器</el-menu-item>
+              <el-menu-item index="/menu/explorercard">区块浏览器</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="dAPP">
               <el-menu-item index="1-3">预言机</el-menu-item>

@@ -30,6 +30,10 @@ export default new Router({
         {
           path: 'exploreraccount',
           component: require('@/components/ExplorerAccount').default
+        },
+        {
+          path: 'explorercard',
+          component: require('@/components/ExplorerCard').default
         }
       ]
     },
