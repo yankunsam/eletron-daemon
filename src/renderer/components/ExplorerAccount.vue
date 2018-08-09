@@ -14,7 +14,7 @@
             <span>{{ props.row.shop }}</span>
           </el-form-item>
           <el-form-item label="余额">
-            <span>{{ props.row.id }}</span>
+            <span>{{ props.row.balance }}</span>
           </el-form-item>
           <el-form-item label="交易数目">
             <span>{{ props.row.shopId }}</span>
@@ -63,10 +63,21 @@ export default {
   name: 'explorer-account',
   data () {
     return {
+      balance: '',
       accountTable: []
     }
   },
   methods: {
+    async getBalance (accountDocument) {
+      let balance = await this.$eos.getCurrencyBalance('eosio.token', accountDocument.name, 'EOS')
+      var temp = {
+        accountname: accountDocument.name,
+        createtime: accountDocument.createdAt.toLocaleTimeString(),
+        updatetime: accountDocument.updatedAt,
+        balance: balance[0]
+      }
+      this.accountTable.push(temp)
+    },
     getAllAccount () {
       this.$mongoclient.connect(this.$mongodburl, (err, db) => {
         if (err) {
@@ -77,16 +88,9 @@ export default {
           if (err) {
             throw err
           }
-          console.log(result)
           this.accountTable.length = 0
           for (var item in result) {
-            console.log(item)
-            var temp = {
-              accountname: result[item].name,
-              createtime: result[item].createdAt.toLocaleTimeString(),
-              updatetime: result[item].updatedAt
-            }
-            this.accountTable.push(temp)
+            this.getBalance(result[item])
           }
           db.close()
         })
