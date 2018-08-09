@@ -1,13 +1,13 @@
 <template>
 <div>
-  <el-input type="textarea" autosize placeholder="请输入内容" v-model="trx_id">
+  <el-input  autosize placeholder="请输入交易 ID" v-model="trx_id " clearable="true">
   </el-input>
   <div style="margin: 20px 0;"></div>
   <!-- <div>
     <el-button type="primary" @click="transactionGet">查询</el-button>
   </div> -->
   <div>
-    <el-button :plain="true" @click="transactionGet">查询</el-button>
+    <el-button :plain="true" @click="transactionGet" @onClose="clearMessage">查询</el-button>
   </div>
   <div>
 
@@ -19,7 +19,7 @@ export default {
   name: 'quary-transaction',
   data () {
     return {
-      trx_id: 'a7dd8b989a066df7b6d7e18d57a8b464a437ef39b94fd077e4d90b5a3faa69d3',
+      trx_id: '',
       message: ''
     }
   },
@@ -45,9 +45,14 @@ export default {
     transactionGet () {
       this.getByMongo()
       this.$message({
+        type: 'success',
+        showClose: true,
         message: this.message,
         center: false
       })
+    },
+    clearMessage () {
+      this.message = ''
     }
   }
 }
