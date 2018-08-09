@@ -44,6 +44,13 @@ export default {
     },
     transactionGet () {
       this.getByMongo()
+      if (this.trx_id === '') {
+        this.$message({
+          type: 'error',
+          message: '请输入交易 ID'
+        })
+        return
+      }
       this.$message({
         type: 'success',
         showClose: true,
