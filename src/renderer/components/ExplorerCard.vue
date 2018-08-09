@@ -10,7 +10,9 @@
     <el-tab-pane label="单笔交易查询" name="third">
       <quary-transaction></quary-transaction>
     </el-tab-pane>
-    <el-tab-pane label="账户交易列表" name="fourth">定时任务补偿</el-tab-pane>
+    <el-tab-pane label="账户交易列表" name="fourth">
+      <account-transaction></account-transaction>
+    </el-tab-pane>
   </el-tabs>
 </div>
 </template>
@@ -18,12 +20,14 @@
   import ExplorerAccount from './ExplorerAccount'
   import TransactionInfo from './TransactionInfo'
   import QuaryTransaction from './QuaryTransaction'
+  import AccountTransaction from './AccountTransaction'
   export default {
     name: 'explorer-card',
     components: {
       ExplorerAccount,
       TransactionInfo,
-      QuaryTransaction
+      QuaryTransaction,
+      AccountTransaction
     },
     data () {
       return {
