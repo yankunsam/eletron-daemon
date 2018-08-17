@@ -23,6 +23,9 @@
     <el-tab-pane label="注册节点" name="test">
       <reg-producer></reg-producer>
     </el-tab-pane>
+    <el-tab-pane label="投票" name="votefor">
+      <vote-producer></vote-producer>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -38,7 +41,7 @@
   import Transfer from './Transfer'
   import NewToken from './NewToken'
   import RegProducer from './RegProducer'
-
+  import VoteProducer from './VoteProducer'
   export default {
     name: 'layout',
     components: {
@@ -47,7 +50,8 @@
       SystemAccount,
       Transfer,
       NewToken,
-      RegProducer
+      RegProducer,
+      VoteProducer
     },
     data () {
       return {
