@@ -42,7 +42,6 @@
       label="is_proxy"
       width="180">
     </el-table-column>
-
   </el-table>
 </div>
 </template>
@@ -79,10 +78,16 @@
         this.producerList = []
         this.$eos.getTableRows(votersInfoList).then(rel => {
           for (var voteritem in rel.rows) {
-            var tem = {}
+            var tem = {
+              producers: []
+            }
             tem.owner = rel.rows[voteritem].owner
             tem.proxy = rel.rows[voteritem].proxy
-            tem.producers = rel.rows[voteritem].producers
+            for (var item in rel.rows[voteritem].producers) {
+              tem.producers.push(rel.rows[voteritem].producers[item])
+              tem.producers.push(' ')
+            }
+            // tem.producers = rel.rows[voteritem].producers
             tem.staked = rel.rows[voteritem].staked
             tem.last_vote_weight = rel.rows[voteritem].last_vote_weight
             tem.proxied_vote_weight = rel.rows[voteritem].proxied_vote_weight
