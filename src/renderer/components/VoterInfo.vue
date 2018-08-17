@@ -5,56 +5,50 @@
   </div>
   <el-table
     :data="votersList"
-    style="width: 100%"
-    :row-class-name="tableRowClassName">
+    style="width: 100%">
+    <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-form label-position="left" inline class="demo-table-expand">
+          <el-form-item label="owner">
+            <span>{{ props.row.owner }}</span>
+          </el-form-item>
+          <el-form-item label="proxy">
+            <span>{{ props.row.proxy }}</span>
+          </el-form-item>
+          <el-form-item label="staked">
+            <span>{{ props.row.staked }}</span>
+          </el-form-item>
+          <el-form-item label="last_vote_weight">
+            <span>{{ props.row.last_vote_weight}}</span>
+          </el-form-item>
+          <el-form-item label="proxied_vote_weight">
+            <span>{{ props.row.proxied_vote_weight }}</span>
+          </el-form-item>
+          <el-form-item label="is_proxy">
+            <span>{{ props.row.is_proxy }}</span>
+          </el-form-item>
+          <el-form-item label="producers">
+            <span>{{ props.row.producers }}</span>
+          </el-form-item>
+        </el-form>
+      </template>
+    </el-table-column>
     <el-table-column
-      prop="owner"
       label="owner"
-      width="180">
+      prop="owner">
     </el-table-column>
     <el-table-column
-      prop="proxy"
-      label="proxy"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="producers"
-      label="producers"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="staked"
       label="staked"
-      width="180">
+      prop="staked">
     </el-table-column>
     <el-table-column
-      prop="last_vote_weight"
-      label="last_vote_weight"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="proxied_vote_weight"
       label="proxied_vote_weight"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="is_proxy"
-      label="is_proxy"
-      width="180">
+      prop="proxied_vote_weight">
     </el-table-column>
   </el-table>
 </div>
 </template>
 
-<style>
-  .el-table .warning-row {
-    background: oldlace;
-  }
-
-  .el-table .success-row {
-    background: #f0f9eb;
-  }
-</style>
 
 <script>
   export default {
@@ -75,6 +69,7 @@
           scope: 'eosio',
           table: 'voters'
         }
+        this.votersList = []
         this.producerList = []
         this.$eos.getTableRows(votersInfoList).then(rel => {
           for (var voteritem in rel.rows) {
@@ -85,7 +80,6 @@
             tem.proxy = rel.rows[voteritem].proxy
             for (var item in rel.rows[voteritem].producers) {
               tem.producers.push(rel.rows[voteritem].producers[item])
-              tem.producers.push(' ')
             }
             // tem.producers = rel.rows[voteritem].producers
             tem.staked = rel.rows[voteritem].staked
@@ -104,3 +98,17 @@
     }
   }
 </script>
+<style>
+  .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+</style>
