@@ -16,9 +16,9 @@ Vue.use(ElementUI)
 
 var mongodburl = 'mongodb://124.127.156.41:27017/'
 var config = {
-  chainId: 'c40a90d6bcb4b9b2c2d4c0916ee97a29af42a420372af44fa4f538ddef9e6b83',
+  chainId: '8a679bd6c011ff93eff0cb99d997bf72a69a0aaddc430d7e9c4b705f4de4d843',
   httpEndpoint: 'http://124.127.156.41:8888',
-  keyProvider: ['5HrRFWkaGjnRd4kEPtgD1QrbuBQoH347UpjjDa7bTwXpzPcbm7i', '5HraW3vTnf6S3QC9br3pwkvzJBddG5yVPY5d3LTRtsbLWubVVvh'],
+  keyProvider: ['5KiDMuzQcK8q3M2MKHLyY4azLq8WnyYHdRN9VCsBh5sq6gDXnuf', '5KNX43WUe1YwajDD7wuJNuhVxzACsFvHo1YoXjrwyTr9wxBH47U'],
   expireInSeconds: 60,
   broadcast: true,
   sign: true
@@ -34,7 +34,7 @@ Vue.prototype.$mongodburl = mongodburl
 Vue.prototype.$fs = fs
 Vue.prototype.$eos = eos
 Vue.prototype.$eosconfig = config
-Vue.prototype.$actor = 'sam'
+Vue.prototype.$actor = 'eosio.token'
 Vue.prototype.$cmd = cmd
 Vue.prototype.$ipfsinit = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsinit'
 Vue.prototype.$clusterinit = 'python /Users/sam/Public/ipfs-daemon/run.py clusterinit'

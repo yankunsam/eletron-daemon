@@ -20,6 +20,9 @@
     <el-tab-pane label="Token创建" name="newtoken">
       <new-token></new-token>
     </el-tab-pane>
+    <el-tab-pane label="注册节点" name="test">
+      <reg-producer></reg-producer>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -34,6 +37,7 @@
   import SystemAccount from './SystemAccount'
   import Transfer from './Transfer'
   import NewToken from './NewToken'
+  import RegProducer from './RegProducer'
 
   export default {
     name: 'layout',
@@ -42,7 +46,8 @@
       Bios,
       SystemAccount,
       Transfer,
-      NewToken
+      NewToken,
+      RegProducer
     },
     data () {
       return {
