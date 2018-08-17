@@ -16,6 +16,9 @@
     <el-tab-pane label="节点列表" name="fifth">
       <producers></producers>
     </el-tab-pane>
+    <el-tab-pane label="投票列表" name="sixth">
+      <voter-info></voter-info>
+    </el-tab-pane>
   </el-tabs>
 </div>
 </template>
@@ -25,6 +28,7 @@
   import QuaryTransaction from './QuaryTransaction'
   import AccountTransaction from './AccountTransaction'
   import Producers from './Producers'
+  import VoterInfo from './VoterInfo'
   export default {
     name: 'explorer-card',
     components: {
@@ -32,7 +36,8 @@
       TransactionInfo,
       QuaryTransaction,
       AccountTransaction,
-      Producers
+      Producers,
+      VoterInfo
     },
     data () {
       return {
