@@ -13,6 +13,9 @@
     <el-tab-pane label="账户交易列表" name="fourth">
       <account-transaction></account-transaction>
     </el-tab-pane>
+    <el-tab-pane label="节点列表" name="fifth">
+      <producers></producers>
+    </el-tab-pane>
   </el-tabs>
 </div>
 </template>
@@ -21,13 +24,15 @@
   import TransactionInfo from './TransactionInfo'
   import QuaryTransaction from './QuaryTransaction'
   import AccountTransaction from './AccountTransaction'
+  import Producers from './Producers'
   export default {
     name: 'explorer-card',
     components: {
       ExplorerAccount,
       TransactionInfo,
       QuaryTransaction,
-      AccountTransaction
+      AccountTransaction,
+      Producers
     },
     data () {
       return {
