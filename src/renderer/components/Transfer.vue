@@ -8,6 +8,13 @@
   <div>
   <el-button  type="text" @click="getBalance">账户: {{ this.$actor  }}  余额： {{ transferParameter.balance }}</el-button>
 </div>
+<div>
+  <p>message: {{ $t("message.hello") }}</p>
+</div>
+<el-button native-type="button" @click="setLocate"></el-button>
+<div>
+
+</div>
   <el-form :label-position="labelPosition" label-width="80px" :model="transferParameter">
     <el-form-item label="合约账户">
       <el-input v-model="transferParameter.contractAccount"></el-input>
@@ -45,6 +52,7 @@ export default {
   },
   methods: {
     onSubmit () {
+      console.log('actor:->', this.$actor)
       this.$eos.transaction({
         actions: [{
           account: this.transferParameter.contractAccount,
@@ -70,6 +78,10 @@ export default {
       this.$eos.getCurrencyBalance(this.transferParameter.contractAccount, this.$actor, 'EOS').then(rel => {
         this.transferParameter.balance = rel[0]
       })
+    },
+    setLocate () {
+      console.log('Set localte')
+      this.$i18n.locale = 'zh'
     }
   }
 }
