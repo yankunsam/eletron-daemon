@@ -93,7 +93,8 @@ const messages = {
       select: 'Please select',
       mainnetconfig: 'Configure',
       privatekey: 'Private Key',
-      import: 'Import'
+      import: 'Import',
+      mainaccount: 'your account'
 
     }
   },
@@ -173,7 +174,8 @@ const messages = {
       select: '请选择',
       mainnetconfig: '配置',
       privatekey: '私钥',
-      import: '导入'
+      import: '导入',
+      mainaccount: '主账户'
     }
   }
 }

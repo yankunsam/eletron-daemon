@@ -7,6 +7,9 @@
 </el-radio-group>
 <div style="margin: 20px;"></div>
 <el-form :label-position="labelPosition" label-width="80px" :model="newAccountInfo">
+  <el-form-item label="creator">
+    <el-input v-model="newAccountInfo.creator"></el-input>
+  </el-form-item>
   <el-form-item label="Owner Key">
     <el-input v-model="newAccountInfo.ownerkey"></el-input>
   </el-form-item>
@@ -29,6 +32,7 @@
       return {
         labelPosition: 'right',
         newAccountInfo: {
+          creator: '',
           ownerkey: '',
           activekey: '',
           accountname: ''
@@ -38,8 +42,7 @@
     methods: {
       onSubmit () {
         console.log(this.newAccountInfo)
-        console.log(this.$actor)
-        this.$eos.transaction(
+        this.$store.state.Counter.eos.transaction(
           {
             actions: [
               {
@@ -47,12 +50,12 @@
                 name: 'newaccount',
                 authorization: [
                   {
-                    actor: this.$actor,
+                    actor: this.newAccountInfo.creator,
                     permission: 'active'
                   }
                 ],
                 data: {
-                  creator: this.$actor,
+                  creator: this.newAccountInfo.creator,
                   name: this.newAccountInfo.accountname,
                   owner: {
                     threshold: 1,
@@ -83,12 +86,12 @@
                 name: 'buyrambytes',
                 authorization: [
                   {
-                    actor: this.$actor,
+                    actor: this.newAccountInfo.creator,
                     permission: 'active'
                   }
                 ],
                 data: {
-                  payer: this.$actor,
+                  payer: this.newAccountInfo.creator,
                   receiver: this.newAccountInfo.accountname,
                   bytes: 102400000
                 }
@@ -98,12 +101,12 @@
                 name: 'delegatebw',
                 authorization: [
                   {
-                    actor: this.$actor,
+                    actor: this.newAccountInfo.creator,
                     permission: 'active'
                   }
                 ],
                 data: {
-                  from: this.$actor,
+                  from: this.newAccountInfo.creator,
                   receiver: this.newAccountInfo.accountname,
                   stake_net_quantity: '1.0000 EOS',
                   stake_cpu_quantity: '1.0000 EOS',

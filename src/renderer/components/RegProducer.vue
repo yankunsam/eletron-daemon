@@ -41,7 +41,7 @@
     },
     methods: {
       registryNode () {
-        this.$eos.transaction(
+        this.$store.state.Counter.eos.transaction(
           {
             actions: [
               {

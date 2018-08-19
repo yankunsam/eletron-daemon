@@ -15,6 +15,9 @@
     <el-form-item :label="$t('message.contractaccount')">
       <el-input v-model="transferParameter.contractAccount"></el-input>
     </el-form-item>
+    <el-form-item :label="$t('message.mainaccount')">
+      <el-input v-model="transferParameter.accountFrom"></el-input>
+    </el-form-item>
     <el-form-item :label="$t('message.receiver')">
       <el-input v-model="transferParameter.accountReceive"></el-input>
     </el-form-item>
@@ -39,6 +42,7 @@ export default {
       labelPosition: 'right',
       transferParameter: {
         contractAccount: '',
+        accountFrom: '',
         accountReceive: '',
         asset: '',
         memo: '',
@@ -54,11 +58,11 @@ export default {
           account: this.transferParameter.contractAccount,
           name: 'transfer',
           authorization: [{
-            actor: this.$actor,
+            actor: this.transferParameter.accountFrom,
             permission: 'active'
           }],
           data: {
-            from: this.$actor,
+            from: this.transferParameter.accountFrom,
             to: this.transferParameter.accountReceive,
             quantity: this.transferParameter.asset,
             memo: this.transferParameter.memo
