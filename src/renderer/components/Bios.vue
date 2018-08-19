@@ -1,6 +1,6 @@
 <template>
   <div>
-  <el-select v-model="value" placeholder="请选择" align="center" @change="deploy()">
+  <el-select v-model="value" :placeholder="$t('message.select')" align="center" @change="deploy()">
     <el-option
       v-for="item in options"
       :key="item.value"

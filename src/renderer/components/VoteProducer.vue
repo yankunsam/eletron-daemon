@@ -17,7 +17,7 @@
     <el-input v-model="votePara.proxy"></el-input>
   </el-form-item>
   <div>
-    <el-select v-model="votedproducers" multiple placeholder="请选择">
+    <el-select v-model="votedproducers" multiple :placeholder="$t('message.select')">
       <el-option
         v-for="item in options"
         :key="item.value"
