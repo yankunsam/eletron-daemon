@@ -1,35 +1,31 @@
 <template>
 <div>
   <el-radio-group v-model="labelPosition" size="small">
-    <el-radio-button label="left">左对齐</el-radio-button>
-    <el-radio-button label="right">右对齐</el-radio-button>
-    <el-radio-button label="top">顶部对齐</el-radio-button>
+    <el-radio-button label="left">{{ $t('message.alignleft') }}</el-radio-button>
+    <el-radio-button label="right">{{ $t('message.alignright') }}</el-radio-button>
+    <el-radio-button label="top">{{ $t('message.aligntop') }}</el-radio-button>
   </el-radio-group>
   <div>
-  <el-button  type="text" @click="getBalance">账户: {{ this.$actor  }}  余额： {{ transferParameter.balance }}</el-button>
+  <el-button  type="text" @click="getBalance">{{ $t("message.account") }} : {{ this.$actor  }}  {{ $t('message.amount') }} : {{ transferParameter.balance }}</el-button>
 </div>
-<div>
-  <p>message: {{ $t("message.hello") }}</p>
-</div>
-<el-button native-type="button" @click="setLocate"></el-button>
 <div>
 
 </div>
-  <el-form :label-position="labelPosition" label-width="80px" :model="transferParameter">
-    <el-form-item label="合约账户">
+  <el-form :label-position="labelPosition" label-width="180px" :model="transferParameter">
+    <el-form-item :label="$t('message.contractaccount')">
       <el-input v-model="transferParameter.contractAccount"></el-input>
     </el-form-item>
-    <el-form-item label="接受者">
+    <el-form-item :label="$t('message.receiver')">
       <el-input v-model="transferParameter.accountReceive"></el-input>
     </el-form-item>
-    <el-form-item label="数量">
+    <el-form-item :label="$t('message.amount')">
       <el-input v-model="transferParameter.asset"></el-input>
     </el-form-item>
-    <el-form-item label="备注">
+    <el-form-item :label="$t('message.memo')">
       <el-input v-model="transferParameter.memo"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">发送</el-button>
+      <el-button type="primary" @click="onSubmit">{{ $t('message.transfer') }}</el-button>
     </el-form-item>
 
   </el-form>
@@ -78,10 +74,6 @@ export default {
       this.$eos.getCurrencyBalance(this.transferParameter.contractAccount, this.$actor, 'EOS').then(rel => {
         this.transferParameter.balance = rel[0]
       })
-    },
-    setLocate () {
-      console.log('Set localte')
-      this.$i18n.locale = 'zh'
     }
   }
 }

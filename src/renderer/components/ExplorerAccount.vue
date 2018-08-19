@@ -93,6 +93,7 @@ export default {
             throw err
           }
           this.accountTable.length = 0
+          console.log('accounts', result[0].name)
           for (var item in result) {
             this.getAccountInfo(result[item])
           }

@@ -1,12 +1,25 @@
 <template>
 <div>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header>
+      <div>
+        <el-switch
+  style="display: block"
+  v-model="englishDefault"
+  active-color="#13ce66"
+  inactive-color="#ff4949"
+  active-text="Englist"
+  inactive-text="中文"
+  @change="languageSelect()">
+</el-switch>
+
+      </div>
+    </el-header>
     <el-container>
       <el-aside width="200px">
         <el-radio-group v-model="isCollapse" style="margin-bottom: 5px;">
-          <el-radio-button :label="false">展开</el-radio-button>
-          <el-radio-button :label="true">收起</el-radio-button>
+          <el-radio-button :label="false">{{ $t("message.unfold") }}</el-radio-button>
+          <el-radio-button :label="true">{{ $t("message.fold") }}</el-radio-button>
         </el-radio-group>
         <el-menu router=true :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
           <el-submenu index="1">
@@ -15,15 +28,15 @@
       <span slot="title">EOS</span>
     </template>
             <el-menu-item-group>
-              <span slot="title">系统</span>
+              <span slot="title">{{ $t("message.system") }}</span>
               <el-menu-item index="/menu/layout">{{ $t("message.mainnet") }}</el-menu-item>
-              <el-menu-item index="/menu/explorercard">区块浏览器</el-menu-item>
+              <el-menu-item index="/menu/explorercard">{{ $t("message.blockexplorer") }}</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="dAPP">
-              <el-menu-item index="1-3">预言机</el-menu-item>
+            <el-menu-item-group :title="$t('message.Dapp')">
+              <el-menu-item index="1-3">{{ $t("message.oracle") }}</el-menu-item>
             </el-menu-item-group>
             <el-submenu index="1-4">
-              <span slot="title">社区云</span>
+              <span slot="title">{{ $t("message.communitycloud") }}</span>
               <el-menu-item index="1-4-1">选项1</el-menu-item>
               <el-menu-item index="/menu/ipfsdashboard"> IPFS</el-menu-item>
             </el-submenu>
@@ -53,7 +66,8 @@ export default {
   },
   data () {
     return {
-      isCollapse: true
+      isCollapse: true,
+      englishDefault: true
     }
   },
   methods: {
@@ -62,6 +76,13 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
+    },
+    languageSelect () {
+      if (!this.englishDefault) {
+        this.$i18n.locale = 'zh'
+      } else {
+        this.$i18n.locale = 'en'
+      }
     }
   }
 }

@@ -5,25 +5,25 @@
     <el-container>
       <el-main>
     <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="合约列表" name="contracttable">
+    <el-tab-pane :label="$t('message.contractlist')" name="contracttable">
       <act-info-list v-bind:needed="false"></act-info-list>
     </el-tab-pane>
-    <el-tab-pane label="EOS主网启动" name="bios">
+    <el-tab-pane :label="$t('message.mainnetcontract')" name="bios">
       <bios></bios>
     </el-tab-pane>
-    <el-tab-pane label="账户" name="third">
+    <el-tab-pane :label="$t('message.account')" name="third">
       <system-account></system-account>
     </el-tab-pane>
-    <el-tab-pane label="转账" name="transfer">
+    <el-tab-pane :label="$t('message.transfer')" name="transfer">
       <transfer></transfer>
     </el-tab-pane>
-    <el-tab-pane label="Token创建" name="newtoken">
+    <el-tab-pane :label="$t('message.tokencreate')" name="newtoken">
       <new-token></new-token>
     </el-tab-pane>
-    <el-tab-pane label="注册节点" name="test">
+    <el-tab-pane :label="$t('message.noderegister')" name="test">
       <reg-producer></reg-producer>
     </el-tab-pane>
-    <el-tab-pane label="投票" name="votefor">
+    <el-tab-pane :label="$t('message.vote')" name="votefor">
       <vote-producer></vote-producer>
     </el-tab-pane>
   </el-tabs>

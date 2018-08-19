@@ -1,31 +1,31 @@
 <template>
   <div>
-    <el-button type="text" @click="refresh()">刷新列表</el-button>
+    <el-button type="text" @click="refresh()">{{ $t("message.refreshlist") }}</el-button>
   <el-table
     :data="tableData"
     style="width: 100%"
     :row-class-name="tableRowClassName">
     <el-table-column
       prop="token"
-      label="积分名称"
+      :label="$t('message.token')"
       width="180"
       align="center">
     </el-table-column>
     <el-table-column
       prop="maximum_supply"
-      label="积分总量"
+      :label="$t('message.maximumsupply')"
       width="180"
       align="center">
     </el-table-column>
     <el-table-column
       prop="issuer"
-      label="积分账户"
+      :label="$t('message.account')"
       width="180"
       align="center">
     </el-table-column>
     <el-table-column
       prop="owner"
-      label="合约账户"
+      :label="$t('message.contractaccount')"
       width="180"
       align="center">
     </el-table-column>

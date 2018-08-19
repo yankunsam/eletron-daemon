@@ -1,9 +1,9 @@
 <template>
   <div>
 <el-radio-group v-model="labelPosition" size="small">
-  <el-radio-button label="left">左对齐</el-radio-button>
-  <el-radio-button label="right">右对齐</el-radio-button>
-  <el-radio-button label="top">顶部对齐</el-radio-button>
+  <el-radio-button label="left">{{ $t('message.alignleft') }}</el-radio-button>
+  <el-radio-button label="right">{{ $t('message.alignright') }}</el-radio-button>
+  <el-radio-button label="top">{{ $t('message.aligntop') }}</el-radio-button>
 </el-radio-group>
 <div style="margin: 20px;"></div>
 <el-form :label-position="labelPosition" label-width="80px" :model="newAccountInfo">
@@ -13,11 +13,11 @@
   <el-form-item label="Active Key">
     <el-input v-model="newAccountInfo.activekey"></el-input>
   </el-form-item>
-  <el-form-item label="账户名">
+  <el-form-item :label="$t('message.account')">
     <el-input v-model="newAccountInfo.accountname"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">创建</el-button>
+    <el-button type="primary" @click="onSubmit">{{ $t("message.create") }}</el-button>
   </el-form-item>
 </el-form>
 </div>

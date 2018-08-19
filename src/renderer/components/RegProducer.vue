@@ -1,9 +1,9 @@
 <template>
   <div>
 <el-radio-group v-model="labelPosition" size="small">
-  <el-radio-button label="left">左对齐</el-radio-button>
-  <el-radio-button label="right">右对齐</el-radio-button>
-  <el-radio-button label="top">顶部对齐</el-radio-button>
+  <el-radio-button label="left">{{ $t('message.alignleft') }}</el-radio-button>
+  <el-radio-button label="right">{{ $t('message.alignright') }}</el-radio-button>
+  <el-radio-button label="top">{{ $t('message.aligntop') }}</el-radio-button>
 </el-radio-group>
 <div style="margin: 20px;"></div>
 <el-form :label-position="labelPosition" label-width="160px" :model="regPara">
@@ -20,7 +20,7 @@
     <el-input v-model="regPara.location"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="registryNode">节点注册</el-button>
+    <el-button type="primary" @click="registryNode">{{ $t('message.noderegister') }}</el-button>
   </el-form-item>
 </el-form>
 </div>
