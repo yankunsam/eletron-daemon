@@ -30,7 +30,6 @@ var eos = Eos(config)
 const messages = {
   en: {
     message: {
-      hello: 'hello Sam',
       mainnet: 'Main Net',
       blockexplorer: 'Block Explorer',
       communitycloud: 'Community Cloud',
@@ -60,13 +59,36 @@ const messages = {
       issueraccount: 'Issuer Account',
       alignleft: 'Align Left',
       alignright: 'Align Right',
-      aligntop: 'Align Top'
+      aligntop: 'Align Top',
+      accountinfo: 'Account Info',
+      transinfo: 'Transaction Info',
+      singletransinfo: 'Single Transaction Info',
+      accounttransinfo: 'Account Transaction Info',
+      nodelist: 'Node List',
+      votelist: 'Vote List',
+      createtime: ' Create Time',
+      updatetime: 'Update Time',
+      nodejoin: 'Join Node',
+      fileupload: 'Upload File',
+      filedownload: 'Download File',
+      nodemonitor: 'Node Monitor',
+      ipfsinit: 'IPFS Init',
+      ipfsconfigure: 'IPFS Configure',
+      ipfsrun: 'IPFS RUN',
+      stop: 'Stop',
+      clusterinit: 'Cluster Init',
+      clusterrun: 'Cluster Run',
+      clustergenesisrun: 'Cluster Genesis Run',
+      get: 'Get',
+      upload: 'Upload',
+      file: 'File',
+      download: 'Download',
+      transaction: 'Transaction'
 
     }
   },
   zh: {
     message: {
-      hello: '你好，Sam',
       mainnet: '主网',
       blockexplorer: '区块浏览器',
       communitycloud: '社区云',
@@ -96,7 +118,31 @@ const messages = {
       issueraccount: 'Issuer 账户',
       alignleft: '左对齐',
       alignright: '右对齐',
-      aligntop: '顶部对齐'
+      aligntop: '顶部对齐',
+      accountinfo: '账户信息',
+      transinfo: '交易信息',
+      singletransinfo: '单笔交易查询',
+      accounttransinfo: '账户交易信息查询',
+      nodelist: '节点列表',
+      votelist: '投票列表',
+      createtime: '创建时间',
+      updatetime: '更新时间',
+      nodejoin: '节点加入',
+      fileupload: '文件上传',
+      filedownload: '文件下载',
+      nodemonitor: '节点监控',
+      ipfsinit: 'IPFS 初始化',
+      ipfsconfigure: 'IPFS 配置',
+      ipfsrun: '运行 IPFS',
+      stop: '停止',
+      clusterinit: 'Cluster 初始化',
+      clusterrun: 'Cluster 执行',
+      clustergenesisrun: 'Cluster  Genesis 执行',
+      get: '获取',
+      upload: '上传',
+      file: '文件',
+      download: '下载',
+      transaction: '交易'
     }
   }
 }

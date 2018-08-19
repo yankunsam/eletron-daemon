@@ -6,7 +6,7 @@
   clearable>
 </el-input>
 <div>
-  <el-button :plain="true" @click="transactionsGet">获取</el-button>
+  <el-button :plain="true" @click="transactionsGet">{{ $t('message.get') }}</el-button>
 </div>
 </div>
 </template>

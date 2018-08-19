@@ -5,11 +5,11 @@
     <el-input v-model="fileForm.path" placeholder="文件绝对路径"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">上传</el-button>
+    <el-button type="primary" @click="onSubmit">{{ $t('message.upload') }}</el-button>
   </el-form-item>
 </el-form>
 <div>
-  <p>文件Hash: {{ fileForm.results }} </p>
+  <p>{{$t('message.file')}} Hash: {{ fileForm.results }} </p>
 </div>
 </div>
 </template>

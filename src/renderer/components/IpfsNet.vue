@@ -1,9 +1,9 @@
 <template>
   <div>
   <el-radio-group v-model="labelPosition" size="small">
-  <el-radio-button label="left">左对齐</el-radio-button>
-  <el-radio-button label="right">右对齐</el-radio-button>
-  <el-radio-button label="top">顶部对齐</el-radio-button>
+  <el-radio-button label="left">{{ $t('message.alignleft') }}</el-radio-button>
+  <el-radio-button label="right">{{ $t('message.alignright') }}</el-radio-button>
+  <el-radio-button label="top">{{ $t('message.aligntop') }}</el-radio-button>
 </el-radio-group>
 <div style="margin: 20px;"></div>
 <el-form :label-position="labelPosition" label-width="150px" :model="ipfsNodeParameter">
@@ -13,21 +13,21 @@
   <el-form-item label="CLUSTER_SECRET">
     <el-input v-model="ipfsNodeParameter.secret"></el-input>
   </el-form-item>
-  <el-form-item label="IPFS 路径">
+  <!-- <el-form-item label="IPFS 路径">
     <el-input v-model="ipfsNodeParameter.ipfsPath"></el-input>
-  </el-form-item>
-  <el-form-item label="CLUSTER 路径">
+  </el-form-item> -->
+  <!-- <el-form-item label="CLUSTER 路径">
     <el-input v-model="ipfsNodeParameter.clusterPath"></el-input>
   </el-form-item>
-    <el-form-item>
+    <el-form-item> -->
     <el-button-group>
 
     <!-- <el-button type="primary" @click="onSubmit">加入</el-button> -->
-    <el-button type="primary" @click="ipfsInit">ipfs初始化</el-button>
-    <el-button type="primary" @click="ipfsManageConfig">ipfs配置</el-button>
-    <el-button type="primary" @click="ipfsRun">ipfs运行</el-button>
+    <el-button type="primary" @click="ipfsInit">{{$t('message.ipfsinit')}}</el-button>
+    <el-button type="primary" @click="ipfsManageConfig">{{ $t('message.ipfsconfigure') }}</el-button>
+    <el-button type="primary" @click="ipfsRun">{{ $t('message.ipfsrun') }}</el-button>
 
-    <el-button type="primary" @click="ipfsStop">停止</el-button>
+    <el-button type="primary" @click="ipfsStop">{{$t('message.stop')}}</el-button>
 
   </el-button-group>
 </el-form-item>
@@ -36,17 +36,17 @@
   <el-button-group>
 
   <!-- <el-button type="primary" @click="onSubmit">加入</el-button> -->
-  <el-button type="primary" @click="clusterInit">cluster初始化</el-button>
+  <el-button type="primary" @click="clusterInit">{{ $t('message.clusterinit') }}</el-button>
   <!-- <el-button type="primary" @click="ipfsManageConfig">cluster配置</el-button> -->
-  <el-button type="primary" @click="clusterRun">cluster运行</el-button>
-  <el-button type="primary" @click="clusterGenesisRun">clustergenesis运行</el-button>
-  <el-button type="primary" @click="clusterStop">cluster停止</el-button>
+  <el-button type="primary" @click="clusterRun">{{ $t('message.clusterrun')}}</el-button>
+  <el-button type="primary" @click="clusterGenesisRun">{{ $t('message.clustergenesisrun')}}</el-button>
+  <el-button type="primary" @click="clusterStop">cluster{{ $t('message.stop')}}</el-button>
 
 </el-button-group>
 </el-form-item>
 <el-form-item>
 <div>
-  <el-button  type="text" @click="getClusterId">获取ClusterID </el-button>
+  <el-button  type="text" @click="getClusterId">{{ $t('message.get') }}ClusterID </el-button>
   <p>  {{ this.clusterId  }}  </p>
 </div>
 </el-form-item>

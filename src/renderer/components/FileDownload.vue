@@ -5,7 +5,7 @@
     <el-input v-model="fileForm.hash" placeholder="文件Hash"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="getFile">下载</el-button>
+    <el-button type="primary" @click="getFile">{{ $t('message.download') }}</el-button>
   </el-form-item>
 </el-form>
 </div>

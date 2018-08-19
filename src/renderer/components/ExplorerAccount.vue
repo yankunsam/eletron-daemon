@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    <el-button type="primary" @click="accountRefresh">刷新</el-button>
+    <el-button type="primary" @click="accountRefresh">{{ $t("message.refreshlist") }}</el-button>
   </div>
   <el-table :data="accountTable" style="width: 100%">
     <el-table-column type="expand">
@@ -31,11 +31,11 @@
         </el-form>
       </template>
     </el-table-column>
-    <el-table-column label="账户名称" prop="accountname">
+    <el-table-column :label="$t('message.account')" prop="accountname">
     </el-table-column>
-    <el-table-column label="创建时间" prop="createtime">
+    <el-table-column :label="$t('message.createtime')" prop="createtime">
     </el-table-column>
-    <el-table-column label="更新时间" prop="updatetime">
+    <el-table-column :label="$t('message.updatetime')" prop="updatetime">
     </el-table-column>
   </el-table>
 </div>

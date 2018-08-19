@@ -8,7 +8,7 @@
   v-model="englishDefault"
   active-color="#13ce66"
   inactive-color="#ff4949"
-  active-text="Englist"
+  active-text="English"
   inactive-text="中文"
   @change="languageSelect()">
 </el-switch>
@@ -37,7 +37,6 @@
             </el-menu-item-group>
             <el-submenu index="1-4">
               <span slot="title">{{ $t("message.communitycloud") }}</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
               <el-menu-item index="/menu/ipfsdashboard"> IPFS</el-menu-item>
             </el-submenu>
           </el-submenu>

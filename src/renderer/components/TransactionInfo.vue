@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <el-button type="primary" @click="getAllTransaction">刷新</el-button>
+      <el-button type="primary" @click="getAllTransaction">{{ $t('message.refreshlist') }}</el-button>
       <p> 默认获取最新 10 个document </p>
-      <p>交易总数:  {{ this.numOfDocs }}</p>
+      <p>{{ $t('message.transaction') }} {{ $t('message.amount') }}:  {{ this.numOfDocs }}</p>
     </div>
   <el-table
     :data="transactionTable"

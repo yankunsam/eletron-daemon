@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="text" @click="refresh()">刷新列表</el-button>
+    <el-button type="text" @click="refresh()">{{ $t('message.refreshlist') }}</el-button>
   <el-table
     :data="peersInfo"
     style="width: 100%"

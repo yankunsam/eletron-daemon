@@ -1,22 +1,22 @@
 <template>
   <div>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="账户信息" name="first">
+    <el-tab-pane :label="$t('message.accountinfo')" name="first">
       <explorer-account></explorer-account>
     </el-tab-pane>
-    <el-tab-pane label="交易信息" name="second">
+    <el-tab-pane :label="$t('message.transinfo')" name="second">
       <transaction-info></transaction-info>
     </el-tab-pane>
-    <el-tab-pane label="单笔交易查询" name="third">
+    <el-tab-pane :label="$t('message.singletransinfo')" name="third">
       <quary-transaction></quary-transaction>
     </el-tab-pane>
-    <el-tab-pane label="账户交易列表" name="fourth">
+    <el-tab-pane :label="$t('message.accounttransinfo')" name="fourth">
       <account-transaction></account-transaction>
     </el-tab-pane>
-    <el-tab-pane label="节点列表" name="fifth">
+    <el-tab-pane :label="$t('message.nodelist')" name="fifth">
       <producers></producers>
     </el-tab-pane>
-    <el-tab-pane label="投票列表" name="sixth">
+    <el-tab-pane :label="$t('message.votelist')" name="sixth">
       <voter-info></voter-info>
     </el-tab-pane>
   </el-tabs>

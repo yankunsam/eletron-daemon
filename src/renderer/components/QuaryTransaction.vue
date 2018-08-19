@@ -7,7 +7,7 @@
     <el-button type="primary" @click="transactionGet">查询</el-button>
   </div> -->
   <div>
-    <el-button :plain="true" @click="transactionGet" @onClose="clearMessage">查询</el-button>
+    <el-button :plain="true" @click="transactionGet" @onClose="clearMessage">{{ $t('message.get') }}</el-button>
   </div>
   <div>
 
