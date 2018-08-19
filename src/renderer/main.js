@@ -88,7 +88,15 @@ const messages = {
       ramusage: 'Ram Usage',
       cpuusage: 'CPU Usage',
       netusage: 'Net Usage',
-      transamount: 'Transaction Amount'
+      transamount: 'Transaction Amount',
+      default: 'default',
+      transactionid: 'Transaction ID',
+      blockid: 'Block ID',
+      transactiontime: 'Transaction Time',
+      transactionsender: 'Transaction Sender',
+      signature: 'Signature',
+      signaturepublickey: 'Signature Publickey',
+      actionamount: 'Actions'
 
     }
   },
@@ -152,7 +160,15 @@ const messages = {
       ramusage: '内存 使用量',
       cpuusage: 'CPU 使用量',
       netusage: '网络 使用量',
-      transamount: '交易量'
+      transamount: '交易量',
+      default: '默认',
+      transactionid: '交易 ID',
+      blockid: '区块 ID',
+      transactiontime: '交易时间',
+      transactionsender: '交易发起人',
+      signature: '签名',
+      signaturepublickey: '签名公钥',
+      actionamount: 'Action 数量'
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <div>
       <el-button type="primary" @click="getAllTransaction">{{ $t('message.refreshlist') }}</el-button>
-      <p> 默认获取最新 10 个document </p>
+      <p> {{ $t('message.default')}}: 10 </p>
       <p>{{ $t('message.transaction') }} {{ $t('message.amount') }}:  {{ this.numOfDocs }}</p>
     </div>
   <el-table
@@ -14,7 +14,7 @@
           <el-form-item label="Action">
             <span>{{ props.row.action }}</span>
           </el-form-item>
-          <el-form-item label="Action数量">
+          <el-form-item :label="$t('message.actionamount')">
             <span>{{ props.row.actionNum }}</span>
           </el-form-item>
           <!-- <el-form-item label="交易 ID">
@@ -36,27 +36,27 @@
       </template>
     </el-table-column>
     <el-table-column
-      label="交易 ID"
+      :label="$t('message.transactionid')"
       prop="trx_id">
     </el-table-column>
     <el-table-column
-      label="区块 ID"
+      :label="$t('message.blockid')"
       prop="blockId">
     </el-table-column>
     <el-table-column
-      label="交易时间"
+      :label="$t('message.transactiontime')"
       prop="createdAt">
     </el-table-column>
     <el-table-column
-      label="交易发起人"
+      :label="$t('message.transactionsender')"
       prop="who">
     </el-table-column>
     <el-table-column
-      label="签名"
+      :label="$t('message.signature')"
       prop="signatures">
     </el-table-column>
     <el-table-column
-      label="签名公钥"
+      :label="$t('message.signaturepublickey')"
       prop="signing_keys">
     </el-table-column>
   </el-table>
