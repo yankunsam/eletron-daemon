@@ -1,7 +1,7 @@
 <template>
   <div>
 <el-input
-  placeholder="请输入账户"
+  :placeholder="$t('message.inputaccount')"
   v-model="account"
   clearable>
 </el-input>

@@ -97,7 +97,9 @@ const messages = {
       signature: 'Signature',
       signaturepublickey: 'Signature Publickey',
       actionamount: 'Actions',
-      atblock: 'Block ID'
+      atblock: 'Block ID',
+      inputtransctionid: 'Please Input a transaction ID',
+      inputaccount: 'Please  Input an account'
 
     }
   },
@@ -170,7 +172,9 @@ const messages = {
       signature: '签名',
       signaturepublickey: '签名公钥',
       actionamount: 'Action 数量',
-      atblock: '所在区块'
+      atblock: '所在区块',
+      inputtransctionid: '请输入交易ID',
+      inputaccount: '请输入账户'
     }
   }
 }

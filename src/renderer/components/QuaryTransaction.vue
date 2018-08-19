@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-input  autosize placeholder="请输入交易 ID" v-model="trx_id " clearable="true">
+  <el-input  autosize :placeholder="$t('message.inputtransctionid')" v-model="trx_id " clearable="true">
   </el-input>
   <div style="margin: 20px 0;"></div>
   <div>
