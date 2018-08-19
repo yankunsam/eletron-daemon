@@ -3,12 +3,12 @@
   <el-input  autosize placeholder="请输入交易 ID" v-model="trx_id " clearable="true">
   </el-input>
   <div style="margin: 20px 0;"></div>
-  <!-- <div>
-    <el-button type="primary" @click="transactionGet">查询</el-button>
-  </div> -->
   <div>
-    <el-button :plain="true" @click="transactionGet" @onClose="clearMessage">{{ $t('message.get') }}</el-button>
+    <el-button type="primary" @click="transactionGet">{{ $t('message.get') }}</el-button>
   </div>
+  <!-- <div>
+    <el-button :plain="true" @click="transactionGet" @onClose="clearMessage">{{ $t('message.get') }}</el-button>
+  </div> -->
   <div>
 
   </div>
@@ -38,7 +38,7 @@ export default {
             throw err
           }
           console.log('result', result[0])
-          this.message = '账户:  ' + result[0].actions[0].account + ' 执行:  ' + result[0].actions[0].name
+          this.message = '|  ' + result[0].actions[0].account + '|   ' + result[0].actions[0].name + '  | Block ID ' + result[0].block_num
         })
       })
     },
