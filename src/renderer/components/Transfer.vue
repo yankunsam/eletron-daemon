@@ -67,8 +67,8 @@ export default {
       }).then(rel => console.log(rel))
     },
     getBalance () {
-      console.log('new EOS', this.$eos)
-      console.log('new httpEndpoint', this.$eosconfig.httpEndpoint)
+      console.log('new EOS', this.$store.state.Counter.eos)
+      console.log('new httpEndpoint', this.$store.state.Counter.config.httpEndpoint)
       if (this.transferParameter.contractAccount === '') {
         console.log('合约账户为空,默认为eosio.token')
         this.transferParameter.contractAccount = 'eosio.token'
