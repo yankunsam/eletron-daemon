@@ -57,7 +57,7 @@
         }
         this.tableData = []
         // var tableData = []
-        this.$eos.getTableRows(actinfolistpara).then(rel => {
+        this.$store.state.Counter.eos.getTableRows(actinfolistpara).then(rel => {
           for (var accountitem in rel.rows) {
             for (var tokenitem in (rel.rows[accountitem]).token) {
               var item = rel.rows[accountitem].token[tokenitem]
@@ -80,7 +80,7 @@
     },
     created () {
       console.log('created')
-      this.refesh()
+      this.refresh()
     }
   }
 </script>

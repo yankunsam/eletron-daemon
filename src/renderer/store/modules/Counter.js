@@ -1,5 +1,17 @@
+import Eos from 'oasisjs'
+var config = {
+  chainId: '8a679bd6c011ff93eff0cb99d997bf72a69a0aaddc430d7e9c4b705f4de4d843',
+  httpEndpoint: 'http://124.127.156.41:8888',
+  keyProvider: ['5KiDMuzQcK8q3M2MKHLyY4azLq8WnyYHdRN9VCsBh5sq6gDXnuf', '5KNX43WUe1YwajDD7wuJNuhVxzACsFvHo1YoXjrwyTr9wxBH47U'],
+  expireInSeconds: 60,
+  broadcast: true,
+  sign: true
+}
+var eos = Eos(config)
 const state = {
-  main: 0
+  main: 0,
+  config: config,
+  eos: eos
 }
 
 const mutations = {
@@ -8,6 +20,9 @@ const mutations = {
   },
   INCREMENT_MAIN_COUNTER (state) {
     state.main++
+  },
+  create_eos (state) {
+    state.eos = Eos(state.config)
   }
 }
 

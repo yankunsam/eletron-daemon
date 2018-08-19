@@ -68,8 +68,8 @@ export default {
   },
   methods: {
     async getAccountInfo (accountDocument) {
-      let balance = await this.$eos.getCurrencyBalance('eosio.token', accountDocument.name, 'EOS')
-      let accountinfo = await this.$eos.getAccount(accountDocument.name)
+      let balance = await this.$store.state.Counter.eos.getCurrencyBalance('eosio.token', accountDocument.name, 'EOS')
+      let accountinfo = await this.$store.state.Counter.eos.getAccount(accountDocument.name)
       var temp = {
         accountname: accountDocument.name,
         createtime: accountDocument.createdAt.toLocaleTimeString(),

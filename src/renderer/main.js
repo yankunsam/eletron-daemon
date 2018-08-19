@@ -9,7 +9,7 @@ import db from './datastore'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css'
-import Eos from 'oasisjs'
+// import Eos from 'oasisjs'
 import cmd from 'node-cmd'
 import ipfsAPI from 'ipfs-api'
 import MongoClient from 'mongodb'
@@ -20,13 +20,14 @@ var mongodburl = 'mongodb://124.127.156.41:27017/'
 var config = {
   chainId: '8a679bd6c011ff93eff0cb99d997bf72a69a0aaddc430d7e9c4b705f4de4d843',
   httpEndpoint: 'http://124.127.156.41:8888',
-  // httpEndpoint: 'http://127.0.0.1:8888',
+  // httpEndpoint: '',
   keyProvider: ['5KiDMuzQcK8q3M2MKHLyY4azLq8WnyYHdRN9VCsBh5sq6gDXnuf', '5KNX43WUe1YwajDD7wuJNuhVxzACsFvHo1YoXjrwyTr9wxBH47U'],
   expireInSeconds: 60,
   broadcast: true,
   sign: true
 }
-var eos = Eos(config)
+var eos = {}
+// var eos = Eos(config)
 const messages = {
   en: {
     message: {
@@ -101,7 +102,10 @@ const messages = {
       inputtransctionid: 'Please Input a transaction ID',
       inputaccount: 'Please  Input an account',
       connectednode: 'Connect Nodes',
-      select: 'Please select'
+      select: 'Please select',
+      mainnetconfig: 'Configure',
+      privatekey: 'Private Key',
+      import: 'Import'
 
     }
   },
@@ -178,7 +182,10 @@ const messages = {
       inputtransctionid: '请输入交易ID',
       inputaccount: '请输入账户',
       connectednode: '已连接节点',
-      select: '请选择'
+      select: '请选择',
+      mainnetconfig: '配置',
+      privatekey: '私钥',
+      import: '导入'
     }
   }
 }

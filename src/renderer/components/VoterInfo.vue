@@ -71,7 +71,7 @@
         }
         this.votersList = []
         this.producerList = []
-        this.$eos.getTableRows(votersInfoList).then(rel => {
+        this.$store.state.Counter.eos.getTableRows(votersInfoList).then(rel => {
           for (var voteritem in rel.rows) {
             var tem = {
               producers: []

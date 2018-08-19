@@ -49,7 +49,7 @@ export default {
   methods: {
     onSubmit () {
       console.log('actor:->', this.$actor)
-      this.$eos.transaction({
+      this.$store.state.Counter.eos.transaction({
         actions: [{
           account: this.transferParameter.contractAccount,
           name: 'transfer',
@@ -67,11 +67,14 @@ export default {
       }).then(rel => console.log(rel))
     },
     getBalance () {
+      console.log('new EOS', this.$eos)
+      console.log('new httpEndpoint', this.$eosconfig.httpEndpoint)
       if (this.transferParameter.contractAccount === '') {
         console.log('合约账户为空,默认为eosio.token')
         this.transferParameter.contractAccount = 'eosio.token'
       }
-      this.$eos.getCurrencyBalance(this.transferParameter.contractAccount, this.$actor, 'EOS').then(rel => {
+      console.log('neweos', this.$store.state.Counter.eos)
+      this.$store.state.Counter.eos.getCurrencyBalance(this.transferParameter.contractAccount, this.$actor, 'EOS').then(rel => {
         this.transferParameter.balance = rel[0]
       })
     }

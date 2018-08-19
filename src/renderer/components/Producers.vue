@@ -55,7 +55,7 @@
           table: 'producers'
         }
         this.producerList = []
-        this.$eos.getTableRows(producerslistpara).then(rel => {
+        this.$store.state.Counter.eos.getTableRows(producerslistpara).then(rel => {
           for (var produceritem in rel.rows) {
             console.log(produceritem)
             var tem = {}

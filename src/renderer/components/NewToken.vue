@@ -49,7 +49,7 @@
     methods: {
       tokenCreate () {
         console.log('In tokenCreate')
-        this.$eos.contract(this.$actor).then(rel => {
+        this.$store.state.Counter.eos.contract(this.$actor).then(rel => {
           console.log(rel)
           rel.create(this.$actor, this.newtokenparameter.maximum_supply).then(relcreate => {
             rel.issue(this.newtokenparameter.issuer, this.newtokenparameter.maximum_supply, 'init issue')
@@ -61,8 +61,8 @@
         console.log('In contractDeploy')
         var wasm = this.$fs.readFileSync(this.newtokenparameter.wasmpath)
         var abi = this.$fs.readFileSync(this.newtokenparameter.abipath)
-        this.$eos.setcode(this.$actor, 0, 0, wasm).then(rel => console.log(rel))
-        this.$eos.setabi(this.$actor, JSON.parse(abi)).then(rel => console.log(rel))
+        this.$store.state.Counter.eos.setcode(this.$actor, 0, 0, wasm).then(rel => console.log(rel))
+        this.$store.state.Counter.eos.setabi(this.$actor, JSON.parse(abi)).then(rel => console.log(rel))
       }
     }
   }

@@ -5,6 +5,9 @@
     <el-container>
       <el-main>
     <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane :label="$t('message.mainnetconfig')" name="configure">
+        <configure v-bind:needed="false"></configure>
+      </el-tab-pane>
     <el-tab-pane :label="$t('message.contractlist')" name="contracttable">
       <act-info-list v-bind:needed="false"></act-info-list>
     </el-tab-pane>
@@ -42,6 +45,7 @@
   import NewToken from './NewToken'
   import RegProducer from './RegProducer'
   import VoteProducer from './VoteProducer'
+  import Configure from './Configure'
   export default {
     name: 'layout',
     components: {
@@ -51,7 +55,8 @@
       Transfer,
       NewToken,
       RegProducer,
-      VoteProducer
+      VoteProducer,
+      Configure
     },
     data () {
       return {
