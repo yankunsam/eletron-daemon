@@ -13,6 +13,9 @@
   <el-form-item :label="$t('message.abipath')">
     <el-input v-model="newtokenparameter.abipath"></el-input>
   </el-form-item>
+  <el-form-item :label="$t('message.mainaccount')">
+    <el-input v-model="newtokenparameter.contractaccount"></el-input>
+  </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="contractDeploy">{{ $t('message.contractdeploy') }}</el-button>
   </el-form-item>
@@ -42,16 +45,17 @@
           abipath: '/Users/sam/Downloads/eosio.token.abi',
           tokenname: 'DEMO',
           maximum_supply: '1000.0000 DEMO',
-          issuer: 'sam'
+          issuer: '',
+          contractaccount: ''
         }
       }
     },
     methods: {
       tokenCreate () {
         console.log('In tokenCreate')
-        this.$store.state.Counter.eos.contract(this.$actor).then(rel => {
+        this.$store.state.Counter.eos.contract(this.newtokenparameter.contractaccount).then(rel => {
           console.log(rel)
-          rel.create(this.$actor, this.newtokenparameter.maximum_supply).then(relcreate => {
+          rel.create(this.newtokenparameter.contractaccount, this.newtokenparameter.maximum_supply).then(relcreate => {
             rel.issue(this.newtokenparameter.issuer, this.newtokenparameter.maximum_supply, 'init issue')
           })
         }
@@ -61,8 +65,8 @@
         console.log('In contractDeploy')
         var wasm = this.$fs.readFileSync(this.newtokenparameter.wasmpath)
         var abi = this.$fs.readFileSync(this.newtokenparameter.abipath)
-        this.$store.state.Counter.eos.setcode(this.$actor, 0, 0, wasm).then(rel => console.log(rel))
-        this.$store.state.Counter.eos.setabi(this.$actor, JSON.parse(abi)).then(rel => console.log(rel))
+        this.$store.state.Counter.eos.setcode(this.newtokenparameter.contractaccount, 0, 0, wasm).then(rel => console.log(rel))
+        this.$store.state.Counter.eos.setabi(this.newtokenparameter.contractaccount, JSON.parse(abi)).then(rel => console.log(rel))
       }
     }
   }
