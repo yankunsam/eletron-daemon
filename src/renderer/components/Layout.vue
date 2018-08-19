@@ -8,9 +8,9 @@
       <el-tab-pane :label="$t('message.mainnetconfig')" name="configure">
         <configure v-bind:needed="false"></configure>
       </el-tab-pane>
-    <el-tab-pane :label="$t('message.contractlist')" name="contracttable">
+    <!-- <el-tab-pane :label="$t('message.contractlist')" name="contracttable">
       <act-info-list v-bind:needed="false"></act-info-list>
-    </el-tab-pane>
+    </el-tab-pane> -->
     <el-tab-pane :label="$t('message.mainnetcontract')" name="bios">
       <bios></bios>
     </el-tab-pane>
