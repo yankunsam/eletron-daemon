@@ -96,7 +96,8 @@ const messages = {
       transactionsender: 'Transaction Sender',
       signature: 'Signature',
       signaturepublickey: 'Signature Publickey',
-      actionamount: 'Actions'
+      actionamount: 'Actions',
+      atblock: 'Block ID'
 
     }
   },
@@ -168,7 +169,8 @@ const messages = {
       transactionsender: '交易发起人',
       signature: '签名',
       signaturepublickey: '签名公钥',
-      actionamount: 'Action 数量'
+      actionamount: 'Action 数量',
+      atblock: '所在区块'
     }
   }
 }

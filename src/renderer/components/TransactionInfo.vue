@@ -26,7 +26,7 @@
           <!-- <el-form-item label="商品分类">
             <span>{{ props.row.category }}</span>
           </el-form-item> -->
-          <el-form-item label="block_num">
+          <el-form-item :label="$t('message.atblock')">
             <span>{{ props.row.blockNum }}</span>
           </el-form-item>
           <!-- <el-form-item label="商品描述">
@@ -109,6 +109,7 @@
             console.log(result)
             for (var item in result) {
               // console.log(result[item].hasOwnProperty('trx_id'))
+              // TODO: mongodb has block_num block_id, but by mongodb npm , did not.
               var temp = {
                 trx_id: result[item].trx_id,
                 createdAt: result[item].createdAt.toLocaleTimeString(),
