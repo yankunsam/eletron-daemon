@@ -19,8 +19,8 @@ Vue.use(ElementUI, { locale })
 var mongodburl = 'mongodb://124.127.156.41:27017/'
 var config = {
   chainId: '8a679bd6c011ff93eff0cb99d997bf72a69a0aaddc430d7e9c4b705f4de4d843',
-  // httpEndpoint: 'http://124.127.156.41:8888',
-  httpEndpoint: 'http://127.0.0.1:8888',
+  httpEndpoint: 'http://124.127.156.41:8888',
+  // httpEndpoint: 'http://127.0.0.1:8888',
   keyProvider: ['5KiDMuzQcK8q3M2MKHLyY4azLq8WnyYHdRN9VCsBh5sq6gDXnuf', '5KNX43WUe1YwajDD7wuJNuhVxzACsFvHo1YoXjrwyTr9wxBH47U'],
   expireInSeconds: 60,
   broadcast: true,
@@ -83,7 +83,12 @@ const messages = {
       upload: 'Upload',
       file: 'File',
       download: 'Download',
-      transaction: 'Transaction'
+      transaction: 'Transaction',
+      balance: 'Balance',
+      ramusage: 'Ram Usage',
+      cpuusage: 'CPU Usage',
+      netusage: 'Net Usage',
+      transamount: 'Transaction Amount'
 
     }
   },
@@ -142,7 +147,12 @@ const messages = {
       upload: '上传',
       file: '文件',
       download: '下载',
-      transaction: '交易'
+      transaction: '交易',
+      balance: '余额',
+      ramusage: '内存 使用量',
+      cpuusage: 'CPU 使用量',
+      netusage: '网络 使用量',
+      transamount: '交易量'
     }
   }
 }

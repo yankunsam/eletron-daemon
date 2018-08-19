@@ -13,19 +13,19 @@
           <el-form-item label="action">
             <span>{{ props.row.shop }}</span>
           </el-form-item>
-          <el-form-item label="余额">
+          <el-form-item :label="$t('message.balance')">
             <span>{{ props.row.balance }}</span>
           </el-form-item>
-          <el-form-item label="交易数目">
+          <el-form-item :label="$t('message.transamount')">
             <span>{{ props.row.shopId }}</span>
           </el-form-item>
-          <el-form-item label="ram使用量">
+          <el-form-item :label="$t('message.ramusage')">
             <span>{{ props.row.ramUsage }}</span>
           </el-form-item>
-          <el-form-item label="cpu使用量">
+          <el-form-item :label="$t('message.cpuusage')">
             <span>{{ props.row.cpuUsage }}</span>
           </el-form-item>
-          <el-form-item label="net使用量">
+          <el-form-item :label="$t('message.netusage')">
             <span>{{ props.row.netUsage }}</span>
           </el-form-item>
         </el-form>
