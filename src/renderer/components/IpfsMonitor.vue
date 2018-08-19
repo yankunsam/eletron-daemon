@@ -7,7 +7,7 @@
     :row-class-name="tableRowClassName">
     <el-table-column
       prop="peers"
-      label="已连接节点"
+      :label="$t('message.connectednode')"
       width="680">
     </el-table-column>
   </el-table>

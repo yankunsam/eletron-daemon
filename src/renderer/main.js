@@ -99,7 +99,8 @@ const messages = {
       actionamount: 'Actions',
       atblock: 'Block ID',
       inputtransctionid: 'Please Input a transaction ID',
-      inputaccount: 'Please  Input an account'
+      inputaccount: 'Please  Input an account',
+      connectednode: 'Connect Nodes'
 
     }
   },
@@ -174,7 +175,8 @@ const messages = {
       actionamount: 'Action 数量',
       atblock: '所在区块',
       inputtransctionid: '请输入交易ID',
-      inputaccount: '请输入账户'
+      inputaccount: '请输入账户',
+      connectednode: '已连接节点'
     }
   }
 }
