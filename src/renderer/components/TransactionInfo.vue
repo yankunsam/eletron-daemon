@@ -89,7 +89,7 @@
     },
     methods: {
       getAllTransaction () {
-        this.$mongoclient.connect(this.$mongodburl, (err, db) => {
+        this.$store.state.Counter.mongoclient.connect(this.$store.state.Counter.mongodburl, (err, db) => {
           if (err) {
             throw err
           }

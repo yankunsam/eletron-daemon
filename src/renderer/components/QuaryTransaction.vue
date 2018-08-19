@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async getByMongo () {
-      await this.$mongoclient.connect(this.$mongodburl, (error, db) => {
+      await this.$store.state.Counter.mongoclient.connect(this.$store.state.Counter.mongodburl, (error, db) => {
         if (error) {
           throw error
         }

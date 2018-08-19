@@ -11,11 +11,11 @@ import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css'
 import cmd from 'node-cmd'
 import ipfsAPI from 'ipfs-api'
-import MongoClient from 'mongodb'
+// import MongoClient from 'mongodb'
 import VueI18n from 'vue-i18n'
 Vue.use(ElementUI, { locale })
 
-var mongodburl = 'mongodb://124.127.156.41:27017/'
+// var mongodburl = 'mongodb://124.127.156.41:27017/'
 const messages = {
   en: {
     message: {
@@ -94,7 +94,8 @@ const messages = {
       mainnetconfig: 'Configure',
       privatekey: 'Private Key',
       import: 'Import',
-      mainaccount: 'your account'
+      mainaccount: 'your account',
+      mongodbconfigure: 'Mongodb Configure'
 
     }
   },
@@ -175,7 +176,8 @@ const messages = {
       mainnetconfig: '配置',
       privatekey: '私钥',
       import: '导入',
-      mainaccount: '主账户'
+      mainaccount: '主账户',
+      mongodbconfigure: 'Mongodb 配置'
     }
   }
 }
@@ -185,8 +187,8 @@ Vue.use(VueI18n)
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.prototype.$db = db
-Vue.prototype.$mongoclient = MongoClient
-Vue.prototype.$mongodburl = mongodburl
+// Vue.prototype.$mongoclient = MongoClient
+// Vue.prototype.$mongodburl = mongodburl
 Vue.prototype.$fs = fs
 Vue.prototype.$actor = 'eosio.token'
 Vue.prototype.$cmd = cmd

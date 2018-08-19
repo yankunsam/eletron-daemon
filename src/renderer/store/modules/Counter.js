@@ -1,4 +1,5 @@
 import Eos from 'oasisjs'
+import MongoClient from 'mongodb'
 var config = {
   chainId: '8a679bd6c011ff93eff0cb99d997bf72a69a0aaddc430d7e9c4b705f4de4d843',
   httpEndpoint: 'http://124.127.156.41:8888',
@@ -8,10 +9,13 @@ var config = {
   sign: true
 }
 var eos = Eos(config)
+var mongodburl = 'mongodb://124.127.156.41:27017/'
 const state = {
   main: 0,
   config: config,
-  eos: eos
+  eos: eos,
+  mongodburl: mongodburl,
+  mongoclient: MongoClient
 }
 
 const mutations = {

@@ -1,6 +1,9 @@
 <template>
   <div>
   <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane :label="$t('message.mongodbconfigure')" name="mongoconfigure">
+      <mongodb-configure></mongodb-configure>
+    </el-tab-pane>
     <el-tab-pane :label="$t('message.accountinfo')" name="first">
       <explorer-account></explorer-account>
     </el-tab-pane>
@@ -29,6 +32,7 @@
   import AccountTransaction from './AccountTransaction'
   import Producers from './Producers'
   import VoterInfo from './VoterInfo'
+  import MongodbConfigure from './MongodbConfigure'
   export default {
     name: 'explorer-card',
     components: {
@@ -37,7 +41,8 @@
       QuaryTransaction,
       AccountTransaction,
       Producers,
-      VoterInfo
+      VoterInfo,
+      MongodbConfigure
     },
     data () {
       return {
