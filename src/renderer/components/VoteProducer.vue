@@ -16,6 +16,9 @@
   <el-form-item label="proxy">
     <el-input v-model="votePara.proxy"></el-input>
   </el-form-item>
+  <el-form-item label="delegate">
+    <el-input v-model="votePara.delegate"></el-input>
+  </el-form-item>
   <div>
     <el-select v-model="votedproducers" multiple :placeholder="$t('message.select')">
       <el-option
@@ -43,6 +46,7 @@
         votePara: {
           voter: '',
           proxy: '',
+          delegate: '',
           producers: []
         },
         options: [
@@ -58,7 +62,7 @@
           scope: 'eosio',
           table: 'producers'
         }
-        this.producerList = []
+        this.options = []
         this.$store.state.Counter.eos.getTableRows(producerslistpara).then(rel => {
           for (var produceritem in rel.rows) {
             console.log(produceritem)
@@ -74,9 +78,27 @@
         this.getProducers()
       },
       VoteProducer () {
+        console.log()
         this.$store.state.Counter.eos.transaction(
           {
             actions: [
+              {
+                account: 'eosio',
+                name: 'delegatebw',
+                authorization: [
+                  {
+                    actor: this.votePara.voter,
+                    permission: 'active'
+                  }
+                ],
+                data: {
+                  from: this.votePara.voter,
+                  receiver: this.votePara.voter,
+                  stake_net_quantity: this.votePara.delegate,
+                  stake_cpu_quantity: this.votePara.delegate,
+                  transfer: 1
+                }
+              },
               {
                 account: 'eosio',
                 name: 'voteproducer',
