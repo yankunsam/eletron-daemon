@@ -96,7 +96,7 @@
                   receiver: this.votePara.voter,
                   stake_net_quantity: this.votePara.delegate,
                   stake_cpu_quantity: this.votePara.delegate,
-                  transfer: 1
+                  transfer: 0
                 }
               },
               {
