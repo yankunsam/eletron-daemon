@@ -34,6 +34,10 @@
   <el-form-item>
     <el-button type="primary" @click="VoteProducer">{{ $t('message.vote') }}</el-button>
   </el-form-item>
+
+  <el-form-item>
+    <el-button type="primary" @click="Undelegatebw">{{ $t('message.undelegatebw') }}</el-button>
+  </el-form-item>
 </el-form>
 </div>
 </template>
@@ -112,6 +116,31 @@
                   voter: this.votePara.voter,
                   proxy: this.votePara.proxy,
                   producers: this.votedproducers
+                }
+              }
+            ]
+          }
+        ).then(rel => console.log(rel))
+      },
+      Undelegatebw () {
+        console.log()
+        this.$store.state.Counter.eos.transaction(
+          {
+            actions: [
+              {
+                account: 'eosio',
+                name: 'undelegatebw',
+                authorization: [
+                  {
+                    actor: this.votePara.voter,
+                    permission: 'active'
+                  }
+                ],
+                data: {
+                  from: this.votePara.voter,
+                  receiver: this.votePara.voter,
+                  unstake_net_quantity: this.votePara.delegate,
+                  unstake_cpu_quantity: this.votePara.delegate
                 }
               }
             ]
