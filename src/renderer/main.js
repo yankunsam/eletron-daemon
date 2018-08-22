@@ -95,7 +95,8 @@ const messages = {
       privatekey: 'Private Key',
       import: 'Import',
       mainaccount: 'your account',
-      mongodbconfigure: 'Mongodb Configure'
+      mongodbconfigure: 'Mongodb Configure',
+      undelegatebw: 'Undelegatebw'
 
     }
   },
@@ -177,7 +178,8 @@ const messages = {
       privatekey: '私钥',
       import: '导入',
       mainaccount: '主账户',
-      mongodbconfigure: 'Mongodb 配置'
+      mongodbconfigure: 'Mongodb 配置',
+      undelegatebw: '撤销抵押'
     }
   }
 }
