@@ -57,7 +57,7 @@
                   producer: this.regPara.producer,
                   producer_key: this.regPara.producer_key,
                   url: this.regPara.url,
-                  location: this.regPara.location
+                  location: Number(this.regPara.location)
                 }
               }
             ]
