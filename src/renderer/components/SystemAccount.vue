@@ -83,7 +83,7 @@
               },
               {
                 account: 'eosio',
-                name: 'buyrambytes',
+                name: 'buyram',
                 authorization: [
                   {
                     actor: this.newAccountInfo.creator,
@@ -93,7 +93,7 @@
                 data: {
                   payer: this.newAccountInfo.creator,
                   receiver: this.newAccountInfo.accountname,
-                  bytes: 102400000
+                  quant: '2.0000 EOS'
                 }
               },
               {
