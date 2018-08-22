@@ -16,8 +16,11 @@
   <el-form-item label="proxy">
     <el-input v-model="votePara.proxy"></el-input>
   </el-form-item>
-  <el-form-item label="delegate">
-    <el-input v-model="votePara.delegate"></el-input>
+  <el-form-item label="net delegate">
+    <el-input v-model="votePara.delegateNet"></el-input>
+  </el-form-item>
+  <el-form-item label="cpu delegate">
+    <el-input v-model="votePara.delegateCpu"></el-input>
   </el-form-item>
   <div>
     <el-select v-model="votedproducers" multiple :placeholder="$t('message.select')">
@@ -50,7 +53,8 @@
         votePara: {
           voter: '',
           proxy: '',
-          delegate: '',
+          delegateNet: '',
+          delegateCpu: '',
           producers: []
         },
         options: [
@@ -98,8 +102,8 @@
                 data: {
                   from: this.votePara.voter,
                   receiver: this.votePara.voter,
-                  stake_net_quantity: this.votePara.delegate,
-                  stake_cpu_quantity: this.votePara.delegate,
+                  stake_net_quantity: this.votePara.delegateNet,
+                  stake_cpu_quantity: this.votePara.delegateCpu,
                   transfer: 0
                 }
               },

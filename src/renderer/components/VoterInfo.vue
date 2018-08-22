@@ -69,9 +69,9 @@
           scope: 'eosio',
           table: 'voters'
         }
-        this.votersList = []
         this.producerList = []
         this.$store.state.Counter.eos.getTableRows(votersInfoList).then(rel => {
+          this.votersList = []
           for (var voteritem in rel.rows) {
             var tem = {
               producers: []
