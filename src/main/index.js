@@ -30,6 +30,7 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+  require('./menu/mainmenu')
 }
 
 app.on('ready', createWindow)
