@@ -21,7 +21,7 @@
           <el-radio-button :label="false">{{ $t("message.unfold") }}</el-radio-button>
           <el-radio-button :label="true">{{ $t("message.fold") }}</el-radio-button>
         </el-radio-group>
-        <el-menu router=true :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-menu :router="true" :default-active="$route.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
           <el-submenu index="1">
             <template slot="title">
       <i class="el-icon-location"></i>
