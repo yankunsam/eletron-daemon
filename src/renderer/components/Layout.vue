@@ -29,6 +29,9 @@
     <el-tab-pane :label="$t('message.vote')" name="votefor">
       <vote-producer></vote-producer>
     </el-tab-pane>
+    <el-tab-pane :label="$t('message.buyram')" name="buyram">
+      <buy-ram></buy-ram>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -46,6 +49,7 @@
   import RegProducer from './RegProducer'
   import VoteProducer from './VoteProducer'
   import Configure from './Configure'
+  import BuyRam from './BuyRam'
   export default {
     name: 'layout',
     components: {
@@ -56,7 +60,8 @@
       NewToken,
       RegProducer,
       VoteProducer,
-      Configure
+      Configure,
+      BuyRam
     },
     data () {
       return {

@@ -96,7 +96,8 @@ const messages = {
       import: 'Import',
       mainaccount: 'your account',
       mongodbconfigure: 'Mongodb Configure',
-      undelegatebw: 'Undelegatebw'
+      undelegatebw: 'Undelegatebw',
+      buyram: 'Buy Ram'
 
     }
   },
@@ -179,7 +180,8 @@ const messages = {
       import: '导入',
       mainaccount: '主账户',
       mongodbconfigure: 'Mongodb 配置',
-      undelegatebw: '撤销抵押'
+      undelegatebw: '撤销抵押',
+      buyram: '买入内存'
     }
   }
 }
