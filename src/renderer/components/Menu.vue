@@ -1,19 +1,28 @@
 <template>
 <div>
   <el-container>
-    <el-header>
-      <div>
-        <el-switch
-  style="display: block"
-  v-model="englishDefault"
-  active-color="#13ce66"
-  inactive-color="#ff4949"
-  active-text="English"
-  inactive-text="中文"
-  @change="languageSelect()">
-</el-switch>
+    <el-header height="60px">
+      <el-row>
+        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+        <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
+        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+        <el-col :span="6"><div class="grid-content bg-purple-light">
 
-      </div>
+            <el-switch
+            style="display: block"
+            v-model="englishDefault"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            active-text="English"
+            inactive-text="中文"
+            background=#B3C0D1
+            @change="languageSelect()">
+          </el-switch>
+
+          </div>
+</el-col>
+</el-row>
+
     </el-header>
     <el-container>
       <el-aside width="200px">
@@ -59,7 +68,7 @@
 <script>
 import SystemAccount from './SystemAccount'
 export default {
-  name: 'menu',
+  name: 'oasis-menu',
   components: {
     SystemAccount
   },
@@ -119,5 +128,35 @@ export default {
 
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+  .el-switch {
+    background-color: #B3C0D1;
+    height: 36px;
   }
 </style>

@@ -32,6 +32,9 @@
     <el-tab-pane :label="$t('message.buyram')" name="buyram">
       <buy-ram></buy-ram>
     </el-tab-pane>
+    <el-tab-pane :label="$t('message.delegate')" name="delegate">
+      <delegate></delegate>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -50,6 +53,7 @@
   import VoteProducer from './VoteProducer'
   import Configure from './Configure'
   import BuyRam from './BuyRam'
+  import Delegate from './Delegate'
   export default {
     name: 'layout',
     components: {
@@ -61,7 +65,8 @@
       RegProducer,
       VoteProducer,
       Configure,
-      BuyRam
+      BuyRam,
+      Delegate
     },
     data () {
       return {
