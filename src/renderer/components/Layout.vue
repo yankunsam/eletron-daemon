@@ -35,6 +35,9 @@
     <el-tab-pane :label="$t('message.delegate')" name="delegate">
       <delegate></delegate>
     </el-tab-pane>
+    <el-tab-pane :label="$t('message.updateauth')" name="updateauth">
+      <update-auth></update-auth>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -54,6 +57,7 @@
   import Configure from './Configure'
   import BuyRam from './BuyRam'
   import Delegate from './Delegate'
+  import UpdateAuth from './UpdateAuth'
   export default {
     name: 'layout',
     components: {
@@ -66,7 +70,8 @@
       VoteProducer,
       Configure,
       BuyRam,
-      Delegate
+      Delegate,
+      UpdateAuth
     },
     data () {
       return {

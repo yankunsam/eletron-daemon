@@ -98,7 +98,8 @@ const messages = {
       mongodbconfigure: 'Mongodb Configure',
       undelegatebw: 'Undelegatebw',
       buyram: 'Buy Ram',
-      delegate: 'Delegate'
+      delegate: 'Delegate',
+      updateauth: 'Update Auth'
 
     }
   },
@@ -183,7 +184,8 @@ const messages = {
       mongodbconfigure: 'Mongodb 配置',
       undelegatebw: '撤销抵押',
       buyram: '买入内存',
-      delegate: '质押'
+      delegate: '质押',
+      updateauth: '权限更改'
     }
   }
 }

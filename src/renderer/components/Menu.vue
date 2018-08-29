@@ -9,7 +9,7 @@
         <el-col :span="6"><div class="grid-content bg-purple-light">
 
             <el-switch
-            style="display: block"
+            style="display: block;height: 60px"
             v-model="englishDefault"
             active-color="#13ce66"
             inactive-color="#ff4949"
