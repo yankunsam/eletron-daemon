@@ -31,13 +31,15 @@ export default {
         }
         var dbo = db.db('EOS')
         var quary = {
-          trx_id: this.trx_id
+          // trx_id: this.trx_id
+          // id: '7b216c2c7098973b8ff9c33f5075bac28a4fd29b0d9055c099734899d4fa6aca'
+          action_traces: {$elemMatch: {'act.account': 'eosio.token', 'act.data.to': 'eosio.token'}}
         }
-        dbo.collection('transactions').find(quary).limit(1).toArray((err, result) => {
+        dbo.collection('transaction_traces').find(quary).toArray((err, result) => {
           if (err) {
             throw err
           }
-          console.log('result', result[0])
+          console.log('result:', result)
           this.message = '|  ' + result[0].actions[0].account + '|   ' + result[0].actions[0].name + '  | Block ID ' + result[0].block_num
         })
       })
