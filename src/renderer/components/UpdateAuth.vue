@@ -16,6 +16,9 @@
   <el-form-item label="publicKey">
     <el-input v-model="authUpdate.publicKey"></el-input>
   </el-form-item>
+  <el-form-item label="actor">
+    <el-input v-model="authUpdate.actor"></el-input>
+  </el-form-item>
   <el-form-item label="permissionLevel">
     <el-input v-model="authUpdate.permissionLevel"></el-input>
   </el-form-item>
@@ -35,6 +38,7 @@
           account: 'signupeoseos',
           permission: 'active',
           publicKey: 'EOS8EiNMUAfTEhaqjSR2VZubG5ufbca9gmKDxcp9BgoBgqBhhRojX',
+          actor: '',
           permissionLevel: 'eosio.code'
         }
       }
@@ -45,7 +49,7 @@
         var updateParameter = {
           account: this.authUpdate.account,
           permission: this.authUpdate.permission,
-          parent: 'owner',
+          parent: '',
           auth: {
             threshold: 1,
             keys: [
@@ -57,8 +61,8 @@
             accounts: [
               {
                 'permission': {
-                  'actor': this.authUpdate.account,
-                  'permission': 'eosio.code'
+                  'actor': this.authUpdate.actor,
+                  'permission': this.authUpdate.permissionLevel
                 },
                 'weight': 1
               }
@@ -66,7 +70,7 @@
             waits: []
           }
         }
-        this.$store.state.Counter.eos.updateauth(updateParameter).then(rel => console.log(rel))
+        this.$store.state.Counter.eos.updateauth(updateParameter, {authorization: 'eosio.token@owner'}).then(rel => console.log(rel))
       }
     }
   }
