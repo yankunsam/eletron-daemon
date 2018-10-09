@@ -88,7 +88,7 @@
 
         }
         this.producerList = []
-        this.getFixedRows(0)
+        this.getFixedRows(1)
         this.$store.state.Counter.eos.getTableRows(votersInfoList).then(rel => {
           this.votersList = []
           for (var voteritem in rel.rows) {
