@@ -54,14 +54,17 @@
     },
     methods: {
       configureMainnet () {
-        if (this.configurePara.httpEndpoint && this.configurePara.chainId) {
+        if (this.configurePara.httpEndpoint) {
           this.$store.state.Counter.config.httpEndpoint = this.configurePara.httpEndpoint
+          this.$store.commit('create_eos')
+        }
+        if (this.configurePara.chainId) {
           this.$store.state.Counter.config.chainId = this.configurePara.chainId
           this.$store.commit('create_eos')
         }
       },
       importPrivatekey () {
-        if (this.configurePara.privatekey) {
+        if (this.configurePara.privatekey && !this.$store.state.Counter.config.keyProvider.includes(this.configurePara.privatekey)) {
           this.$store.state.Counter.config.keyProvider.push(this.configurePara.privatekey)
           this.$store.commit('create_eos')
         }
