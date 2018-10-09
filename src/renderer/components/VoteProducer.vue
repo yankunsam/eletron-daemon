@@ -16,12 +16,6 @@
   <el-form-item label="proxy">
     <el-input v-model="votePara.proxy"></el-input>
   </el-form-item>
-  <el-form-item label="net delegate">
-    <el-input v-model="votePara.delegateNet"></el-input>
-  </el-form-item>
-  <el-form-item label="cpu delegate">
-    <el-input v-model="votePara.delegateCpu"></el-input>
-  </el-form-item>
   <div>
     <el-select v-model="votedproducers" multiple :placeholder="$t('message.select')">
       <el-option
@@ -90,23 +84,6 @@
         this.$store.state.Counter.eos.transaction(
           {
             actions: [
-              {
-                account: 'eosio',
-                name: 'delegatebw',
-                authorization: [
-                  {
-                    actor: this.votePara.voter,
-                    permission: 'active'
-                  }
-                ],
-                data: {
-                  from: this.votePara.voter,
-                  receiver: this.votePara.voter,
-                  stake_net_quantity: this.votePara.delegateNet,
-                  stake_cpu_quantity: this.votePara.delegateCpu,
-                  transfer: 0
-                }
-              },
               {
                 account: 'eosio',
                 name: 'voteproducer',
