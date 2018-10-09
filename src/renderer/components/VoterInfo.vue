@@ -54,6 +54,22 @@
   export default {
     name: 'voter-info',
     methods: {
+      async getFixedRows (limit) {
+        var votersInfoList = {
+          json: true,
+          code: 'eosio',
+          scope: 'eosio',
+          table: 'voters',
+          limit: limit
+        }
+        await this.$store.state.Counter.eos.getTableRows(votersInfoList).then(rel => {
+          console.log(rel)
+          if (rel.more) {
+            this.getFixedRows(limit + 1)
+            this.limit = this.limit + 1
+          }
+        })
+      },
       tableRowClassName ({row, rowIndex}) {
         if (rowIndex === 1) {
           return 'warning-row'
@@ -67,9 +83,12 @@
           json: true,
           code: 'eosio',
           scope: 'eosio',
-          table: 'voters'
+          table: 'voters',
+          limit: this.limit
+
         }
         this.producerList = []
+        this.getFixedRows(0)
         this.$store.state.Counter.eos.getTableRows(votersInfoList).then(rel => {
           this.votersList = []
           for (var voteritem in rel.rows) {
@@ -93,7 +112,8 @@
     },
     data () {
       return {
-        votersList: []
+        votersList: [],
+        limit: 0
       }
     }
   }
