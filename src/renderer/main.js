@@ -99,7 +99,8 @@ const messages = {
       undelegatebw: 'Undelegatebw',
       buyram: 'Buy Ram',
       delegate: 'Delegate',
-      updateauth: 'Update Auth'
+      updateauth: 'Update Auth',
+      multisig: 'Multisig'
 
     }
   },
@@ -185,7 +186,8 @@ const messages = {
       undelegatebw: '撤销抵押',
       buyram: '买入内存',
       delegate: '质押',
-      updateauth: '权限更改'
+      updateauth: '权限更改',
+      multisig: '多重签名'
     }
   }
 }
@@ -200,16 +202,16 @@ Vue.prototype.$db = db
 Vue.prototype.$fs = fs
 Vue.prototype.$actor = 'eosio.token'
 Vue.prototype.$cmd = cmd
-Vue.prototype.$ipfsinit = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsinit'
-Vue.prototype.$clusterinit = 'python /Users/sam/Public/ipfs-daemon/run.py clusterinit'
-Vue.prototype.$ipfsmanageconfig = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsmanageconfig'
-Vue.prototype.$ipfsrun = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsrun'
-Vue.prototype.$clusterrun = 'python /Users/sam/Public/ipfs-daemon/run.py clusterrun'
-Vue.prototype.$clustergenesisrun = 'python /Users/sam/Public/ipfs-daemon/run.py clustergenesisrun'
-Vue.prototype.$getClusterId = 'python /Users/sam/Public/ipfs-daemon/run.py getclusterid'
-Vue.prototype.$ipfsstop = 'python /Users/sam/Public/ipfs-daemon/run.py ipfsstop'
-Vue.prototype.$clusterstop = 'python /Users/sam/Public/ipfs-daemon/run.py clusterstop'
-Vue.prototype.$ipfsapi = ipfsAPI('localhost', '5001', {protocol: 'http'})
+Vue.prototype.$ipfsinit = 'python3 /Users/sam/Public/ipfs-daemon/run.py ipfsinit'
+Vue.prototype.$clusterinit = 'python3 /Users/sam/Public/ipfs-daemon/run.py clusterinit'
+Vue.prototype.$ipfsmanageconfig = 'python3 /Users/sam/Public/ipfs-daemon/run.py ipfsmanageconfig'
+Vue.prototype.$ipfsrun = 'python3 /Users/sam/Public/ipfs-daemon/run.py ipfsrun'
+Vue.prototype.$clusterrun = 'python3 /Users/sam/Public/ipfs-daemon/run.py clusterrun'
+Vue.prototype.$clustergenesisrun = 'python3 /Users/sam/Public/ipfs-daemon/run.py clustergenesisrun'
+Vue.prototype.$getClusterId = 'python3 /Users/sam/Public/ipfs-daemon/run.py getclusterid'
+Vue.prototype.$ipfsstop = 'python3 /Users/sam/Public/ipfs-daemon/run.py ipfsstop'
+Vue.prototype.$clusterstop = 'python3 /Users/sam/Public/ipfs-daemon/run.py clusterstop'
+Vue.prototype.$ipfsapi = ipfsAPI('192.168.1.243', '5001', {protocol: 'http'})
 console.log('In main.js')
 
 const i18n = new VueI18n({

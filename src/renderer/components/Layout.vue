@@ -38,6 +38,9 @@
     <el-tab-pane :label="$t('message.updateauth')" name="updateauth">
       <update-auth></update-auth>
     </el-tab-pane>
+    <el-tab-pane :label="$t('message.multisig')" name="multisig">
+      <multisig></multisig>
+    </el-tab-pane>
   </el-tabs>
 </el-main>
 </el-container>
@@ -58,6 +61,7 @@
   import BuyRam from './BuyRam'
   import Delegate from './Delegate'
   import UpdateAuth from './UpdateAuth'
+  import Multisig from './Multisig'
   export default {
     name: 'layout',
     components: {
@@ -71,7 +75,8 @@
       Configure,
       BuyRam,
       Delegate,
-      UpdateAuth
+      UpdateAuth,
+      Multisig
     },
     data () {
       return {
