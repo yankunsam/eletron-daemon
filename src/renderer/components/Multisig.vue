@@ -7,16 +7,22 @@
 </el-radio-group>
 <div style="margin: 20px;"></div>
 <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-  <el-form-item label="名称">
-    <el-input v-model="formLabelAlign.name"></el-input>
+  <el-form-item label="proposer">
+    <el-input v-model="formLabelAlign.proposer"></el-input>
   </el-form-item>
-  <el-form-item label="活动区域">
-    <el-input v-model="formLabelAlign.region"></el-input>
+  <el-form-item label="proposal_name">
+    <el-input v-model="formLabelAlign.proposal_name"></el-input>
   </el-form-item>
-  <el-form-item label="活动形式">
-    <el-input v-model="formLabelAlign.type"></el-input>
+  <el-form-item label="requested">
+    <el-input v-model="formLabelAlign.requested"></el-input>
+  </el-form-item>
+  <el-form-item label="trx">
+    <el-input v-model="formLabelAlign.trx"></el-input>
   </el-form-item>
 </el-form>
+<div>
+  <el-button type="primary" @click="propose"> Propose</el-button>
+</div>
 </div>
 </template>
 
@@ -27,10 +33,16 @@
       return {
         labelPosition: 'right',
         formLabelAlign: {
-          name: '',
-          region: '',
-          type: ''
+          proposer: '',
+          proposal_name: '',
+          requested: '',
+          trx: ''
         }
+      }
+    },
+    methods: {
+      propose () {
+        console.log('In propose')
       }
     }
   }
