@@ -5,8 +5,8 @@
   <el-radio-button label="right">右对齐</el-radio-button>
   <el-radio-button label="top">顶部对齐</el-radio-button>
 </el-radio-group>
-<div style="margin: 20px;"></div>
-<el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+<div style="margin: 25px;"></div>
+<el-form :label-position="labelPosition" label-width="90px" :model="formLabelAlign">
   <el-form-item label="proposer">
     <el-input v-model="formLabelAlign.proposer"></el-input>
   </el-form-item>
@@ -33,43 +33,25 @@
       return {
         labelPosition: 'right',
         formLabelAlign: {
-          proposer: '',
-          proposal_name: '',
-          requested: '',
+          proposer: 'eosio',
+          proposal_name: 'test',
+          requested: [{'actor': 'eosio.token', 'permission': 'active'}],
           trx_data: '',
-          trx: {},
-          block: {}
+          trx: {
+            'transaction_header': {}
+          },
+          block: {
+          }
         }
       }
     },
     methods: {
-      async getBlock (num) {
-        await this.$store.state.Counter.eos.getBlock(num).then(rel => {
-          this.block = rel
-          console.log(this.block)
-        }
-
-        )
-      },
-      propose () {
-        console.log('In propose')
-        this.$store.state.Counter.eos.getInfo((error, rel) => {
-          console.log(error, rel)
-          var chainDate = new Date(rel.head_block_time + 'Z')
-          var expiration = new Date(chainDate.getTime() + 60 * 1000)
-          // var refblocknum = rel.last_irreversible_block_num & 0xFFFF
-          this.getBlock(rel.last_irreversible_block_num)
-          this.formLabelAlign.trx.expiration = expiration.toISOString().split('.')[0]
-          this.formLabelAlign.trx.ref_block_prefix = this.block.ref_block_prefix
-          this.formLabelAlign.trx.max_net_usage_words = 0
-          this.formLabelAlign.trx.max_cpu_usage_ms = 0
-          this.formLabelAlign.trx.delay_sec = 0
-          this.formLabelAlign.trx.context_free_actions = []
-          this.formLabelAlign.trx.actions = []
-          this.formLabelAlign.trx.transaction_extensions = []
-          console.log(this.formLabelAlign.trx.expiration)
-        }
-        )
+      async getBlockAsync (num) {
+        let rel = await this.$store.state.Counter.eos.getBlock(num)
+        console.log('In getBlock')
+        // console.log(rel)
+        this.formLabelAlign.trx.ref_block_prefix = rel.ref_block_prefix
+        console.log(this.formLabelAlign.trx)
         this.$store.state.Counter.eos.transaction(
           {
             actions: [
@@ -78,7 +60,7 @@
                 name: 'propose',
                 authorization: [
                   {
-                    actor: this.proposer,
+                    actor: this.formLabelAlign.proposer,
                     permission: 'active'
                   }
                 ],
@@ -86,12 +68,52 @@
                   proposer: this.formLabelAlign.proposer,
                   proposal_name: this.formLabelAlign.proposal_name,
                   requested: this.formLabelAlign.requested,
-                  trx: this.trx
+                  trx: this.formLabelAlign.trx
                 }
               }
             ]
           }
         ).then(rel => (console.log(rel)))
+      },
+      propose () {
+        console.log('In propose')
+        this.$store.state.Counter.eos.getInfo((error, rel) => {
+          if (error) {
+            console.log(error)
+          }
+          // console.log(error, rel)
+          var chainDate = new Date(rel.head_block_time + 'Z')
+          var expiration = new Date(chainDate.getTime() + 60 * 1000)
+          var refblocknum = rel.last_irreversible_block_num & 0xFFFF
+          this.formLabelAlign.trx.expiration = expiration.toISOString().split('.')[0]
+          this.formLabelAlign.trx.ref_block_num = refblocknum
+          this.formLabelAlign.trx.ref_block_prefix = this.formLabelAlign.block.ref_block_prefix
+          this.formLabelAlign.trx.max_net_usage_words = 0
+          this.formLabelAlign.trx.max_cpu_usage_ms = 0
+          this.formLabelAlign.trx.delay_sec = 0
+          this.formLabelAlign.trx.context_free_actions = []
+          this.formLabelAlign.trx.actions = [
+            {
+              account: 'eosio.token',
+              name: 'transfer',
+              authorization: [
+                {
+                  actor: 'eosio.token',
+                  permission: 'active'
+                }
+              ],
+              data: {
+                from: 'eosio.token',
+                to: 'eosio',
+                quantity: '1.0000 EOS',
+                memo: 'By Sam'
+              }
+            }
+          ]
+          this.formLabelAlign.trx.transaction_extensions = []
+          this.getBlockAsync(rel.last_irreversible_block_num)
+        }
+        )
       }
     }
   }
