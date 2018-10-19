@@ -23,6 +23,28 @@
 <div>
   <el-button type="primary" @click="propose"> Propose</el-button>
 </div>
+<div>
+  <el-radio-group v-model="labelPosition" size="small">
+  <el-radio-button label="left">左对齐</el-radio-button>
+  <el-radio-button label="right">右对齐</el-radio-button>
+  <el-radio-button label="top">顶部对齐</el-radio-button>
+</el-radio-group>
+<div style="margin: 20px;"></div>
+<el-form :label-position="formProposal" label-width="80px" :model="formLabelAlign">
+  <el-form-item label="scope">
+    <el-input v-model="formProposal.scope"></el-input>
+  </el-form-item>
+  <el-form-item label="proposal_name">
+    <el-input v-model="formProposal.proposal_name"></el-input>
+  </el-form-item>
+  <el-form-item label="transaction">
+    <el-input v-model="formProposal.packed_transaction"></el-input>
+  </el-form-item>
+</el-form>
+<div>
+  <el-button type="primary" @click="getProposal"> Propose</el-button>
+</div>
+</div>
 </div>
 </template>
 
@@ -42,6 +64,11 @@
           },
           block: {
           }
+        },
+        formProposal: {
+          scope: 'eosio',
+          proposal_name: '',
+          packed_transaction: ''
         }
       }
     },
@@ -114,6 +141,23 @@
           this.getBlockAsync(rel.last_irreversible_block_num)
         }
         )
+      },
+      getProposal () {
+        console.log('In getProposal')
+        var proposalpara = {
+          json: true,
+          code: 'eosio.msig',
+          scope: this.formProposal.scope,
+          table: 'proposal'
+        }
+        this.$store.state.Counter.eos.getTableRows(proposalpara).then(rel => {
+          for (var proposalitem in rel.rows) {
+            this.formProposal.packed_transaction = rel.rows[proposalitem].packed_transaction
+            console.log(rel.rows[proposalitem].packed_transaction)
+            this.formProposal.proposal_name = rel.rows[proposalitem].proposal_name
+            console.log(rel.rows[proposalitem].proposal_name)
+          }
+        })
       }
     }
   }
