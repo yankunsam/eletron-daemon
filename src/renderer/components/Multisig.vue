@@ -30,7 +30,7 @@
   <el-radio-button label="top">顶部对齐</el-radio-button>
 </el-radio-group>
 <div style="margin: 20px;"></div>
-<el-form :label-position="formProposal2" label-width="80px" :model="formLabelAlign">
+<el-form :label-position="labelPosition2" label-width="80px" :model="formLabelAlign">
   <el-form-item label="scope">
     <el-input v-model="formProposal.scope"></el-input>
   </el-form-item>
@@ -76,6 +76,31 @@
   <el-button type="primary" @click="approveProposal"> ApprovePropose</el-button>
 </div>
 </div>
+
+<div>
+  <el-radio-group v-model="labelPosition4" size="small">
+  <el-radio-button label="left">左对齐</el-radio-button>
+  <el-radio-button label="right">右对齐</el-radio-button>
+  <el-radio-button label="top">顶部对齐</el-radio-button>
+</el-radio-group>
+<div style="margin: 20px;"></div>
+<el-form :label-position="labelPosition4" label-width="80px" :model="formLabelAlign">
+  <el-form-item label="proposer">
+    <el-input v-model="formExec.proposer"></el-input>
+  </el-form-item>
+  <el-form-item label="proposal_name">
+    <el-input v-model="formExec.proposal_name"></el-input>
+  </el-form-item>
+  <el-form-item label="executer">
+    <el-input v-model="formExec.executer"></el-input>
+  </el-form-item>
+</el-form>
+</div>
+<div>
+  <div>
+    <el-button type="primary" @click="executerProposal"> ExecuterPropose</el-button>
+  </div>
+</div>
 </div>
 </template>
 
@@ -86,6 +111,8 @@
       return {
         labelPosition: 'right',
         labelPosition2: 'right',
+        labelPosition3: 'right',
+        labelPosition4: 'right',
         formLabelAlign: {
           proposer: 'eosio',
           proposal_name: 'test',
@@ -112,6 +139,11 @@
             permission: 'active'
           },
           actor: 'eosio.token'
+        },
+        formExec: {
+          proposer: 'eosio',
+          proposal_name: 'test',
+          executer: 'eosio'
         }
       }
     },
@@ -239,6 +271,30 @@
             ]
           }
         ).then(rel => console.log(rel))
+      },
+      executerProposal () {
+        console.log('In executerProposal')
+        this.$store.state.Counter.eos.transaction(
+          {
+            actions: [
+              {
+                account: 'eosio.msig',
+                name: 'exec',
+                authorization: [
+                  {
+                    actor: this.formExec.executer,
+                    permission: 'active'
+                  }
+                ],
+                data: {
+                  proposer: this.formExec.proposer,
+                  proposal_name: this.formExec.proposal_name,
+                  executer: this.formExec.executer
+                }
+              }
+            ]
+          }
+        )
       }
     }
   }
