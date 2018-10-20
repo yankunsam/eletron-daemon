@@ -24,25 +24,31 @@
   <el-button type="primary" @click="propose"> Propose</el-button>
 </div>
 <div>
-  <el-radio-group v-model="labelPosition" size="small">
+  <el-radio-group v-model="labelPosition2" size="small">
   <el-radio-button label="left">左对齐</el-radio-button>
   <el-radio-button label="right">右对齐</el-radio-button>
   <el-radio-button label="top">顶部对齐</el-radio-button>
 </el-radio-group>
 <div style="margin: 20px;"></div>
-<el-form :label-position="formProposal" label-width="80px" :model="formLabelAlign">
+<el-form :label-position="formProposal2" label-width="80px" :model="formLabelAlign">
   <el-form-item label="scope">
     <el-input v-model="formProposal.scope"></el-input>
   </el-form-item>
   <el-form-item label="proposal_name">
     <el-input v-model="formProposal.proposal_name"></el-input>
   </el-form-item>
-  <el-form-item label="transaction">
+  <el-form-item label="packed_transaction">
     <el-input v-model="formProposal.packed_transaction"></el-input>
+  </el-form-item>
+  <el-form-item label="data">
+    <el-input v-model="formProposal.data"></el-input>
+  </el-form-item>
+  <el-form-item label="transaction">
+    <el-input v-model="formProposal.transaction"></el-input>
   </el-form-item>
 </el-form>
 <div>
-  <el-button type="primary" @click="getProposal"> Propose</el-button>
+  <el-button type="primary" @click="getProposal"> GetPropose</el-button>
 </div>
 </div>
 </div>
@@ -54,6 +60,7 @@
     data () {
       return {
         labelPosition: 'right',
+        labelPosition2: 'right',
         formLabelAlign: {
           proposer: 'eosio',
           proposal_name: 'test',
@@ -68,7 +75,9 @@
         formProposal: {
           scope: 'eosio',
           proposal_name: '',
-          packed_transaction: ''
+          packed_transaction: '',
+          data: '',
+          transaction: ''
         }
       }
     },
@@ -157,6 +166,20 @@
             this.formProposal.proposal_name = rel.rows[proposalitem].proposal_name
             console.log(rel.rows[proposalitem].proposal_name)
           }
+        })
+        console.log(this.$store.state.Counter.eos)
+        this.$store.state.Counter.eos.getTest(this.formProposal.packed_transaction).then(rel => {
+          console.log('getTest', rel)
+          this.formProposal.data = rel.test
+          var abipara = {
+            code: 'eosio.token',
+            action: 'transfer',
+            binargs: this.formProposal.data
+          }
+          this.$store.state.Counter.eos.abiBinToJson(abipara).then(rel => {
+            console.log(rel.args)
+            this.formProposal.transaction = 'from: ' + rel.args.from + ' to: ' + rel.args.to + ' quantity: ' + rel.args.quantity + ' memo: ' + rel.args.memo
+          })
         })
       }
     }
