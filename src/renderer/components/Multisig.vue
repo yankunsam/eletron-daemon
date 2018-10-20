@@ -51,6 +51,31 @@
   <el-button type="primary" @click="getProposal"> GetPropose</el-button>
 </div>
 </div>
+<div>
+  <el-radio-group v-model="labelPosition3" size="small">
+  <el-radio-button label="left">左对齐</el-radio-button>
+  <el-radio-button label="right">右对齐</el-radio-button>
+  <el-radio-button label="top">顶部对齐</el-radio-button>
+</el-radio-group>
+<div style="margin: 20px;"></div>
+<el-form :label-position="labelPosition3" label-width="80px" :model="formLabelAlign">
+  <el-form-item label="proposer">
+    <el-input v-model="formApprove.proposer"></el-input>
+  </el-form-item>
+  <el-form-item label="proposal_name">
+    <el-input v-model="formApprove.proposal_name"></el-input>
+  </el-form-item>
+  <el-form-item label="level">
+    <el-input v-model="formApprove.level"></el-input>
+  </el-form-item>
+  <el-form-item label="actor">
+    <el-input v-model="formApprove.actor"></el-input>
+  </el-form-item>
+</el-form>
+<div>
+  <el-button type="primary" @click="approveProposal"> ApprovePropose</el-button>
+</div>
+</div>
 </div>
 </template>
 
@@ -78,6 +103,15 @@
           packed_transaction: '',
           data: '',
           transaction: ''
+        },
+        formApprove: {
+          proposer: 'eosio',
+          proposal_name: 'test',
+          level: {
+            actor: 'eosio.token',
+            permission: 'active'
+          },
+          actor: 'eosio.token'
         }
       }
     },
@@ -181,6 +215,30 @@
             this.formProposal.transaction = 'from: ' + rel.args.from + ' to: ' + rel.args.to + ' quantity: ' + rel.args.quantity + ' memo: ' + rel.args.memo
           })
         })
+      },
+      approveProposal () {
+        console.log('In approveProposal')
+        this.$store.state.Counter.eos.transaction(
+          {
+            actions: [
+              {
+                account: 'eosio.msig',
+                name: 'approve',
+                authorization: [
+                  {
+                    actor: this.formApprove.actor,
+                    permission: 'active'
+                  }
+                ],
+                data: {
+                  proposer: this.formApprove.proposer,
+                  proposal_name: this.formApprove.proposal_name,
+                  level: this.formApprove.level
+                }
+              }
+            ]
+          }
+        ).then(rel => console.log(rel))
       }
     }
   }
