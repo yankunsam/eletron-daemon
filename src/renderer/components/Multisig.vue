@@ -66,7 +66,7 @@
     <el-input v-model="formApprove.proposal_name"></el-input>
   </el-form-item>
   <el-form-item label="level">
-    <el-input v-model="formApprove.level"></el-input>
+    <el-input v-model="formApprove.level.actor"></el-input>
   </el-form-item>
   <el-form-item label="actor">
     <el-input v-model="formApprove.actor"></el-input>
@@ -116,7 +116,20 @@
         formLabelAlign: {
           proposer: 'eosio',
           proposal_name: 'test',
-          requested: [{'actor': 'eosio.token', 'permission': 'active'}],
+          requested: [
+            {
+              'actor': 'samsamsamsam',
+              'permission': 'active'
+            },
+            {
+              'actor': 'samkunnbanb1',
+              'permission': 'active'
+            },
+            {
+              'actor': 'samkunnbanb2',
+              'permission': 'active'
+            }
+          ],
           trx_data: '',
           trx: {
             'transaction_header': {}
@@ -135,10 +148,10 @@
           proposer: 'eosio',
           proposal_name: 'test',
           level: {
-            actor: 'eosio.token',
+            actor: '',
             permission: 'active'
           },
-          actor: 'eosio.token'
+          actor: ''
         },
         formExec: {
           proposer: 'eosio',
@@ -185,7 +198,7 @@
           }
           // console.log(error, rel)
           var chainDate = new Date(rel.head_block_time + 'Z')
-          var expiration = new Date(chainDate.getTime() + 60 * 1000)
+          var expiration = new Date(chainDate.getTime() + 600 * 1000)
           var refblocknum = rel.last_irreversible_block_num & 0xFFFF
           this.formLabelAlign.trx.expiration = expiration.toISOString().split('.')[0]
           this.formLabelAlign.trx.ref_block_num = refblocknum
@@ -200,14 +213,22 @@
               name: 'transfer',
               authorization: [
                 {
-                  actor: 'eosio.token',
+                  actor: 'samsamsamsam',
+                  permission: 'active'
+                },
+                {
+                  actor: 'samkunnbanb1',
+                  permission: 'active'
+                },
+                {
+                  actor: 'samkunnbanb2',
                   permission: 'active'
                 }
               ],
               data: {
                 from: 'eosio.token',
                 to: 'eosio',
-                quantity: '1.0000 EOS',
+                quantity: '11.0000 EOS',
                 memo: 'By Sam'
               }
             }
