@@ -155,7 +155,7 @@
         },
         formExec: {
           proposer: 'eosio',
-          proposal_name: 'test',
+          proposal_name: '',
           executer: 'eosio'
         }
       }
@@ -199,6 +199,7 @@
           // console.log(error, rel)
           var chainDate = new Date(rel.head_block_time + 'Z')
           var expiration = new Date(chainDate.getTime() + 600 * 1000)
+          console.log('expiration: ->', expiration)
           var refblocknum = rel.last_irreversible_block_num & 0xFFFF
           this.formLabelAlign.trx.expiration = expiration.toISOString().split('.')[0]
           this.formLabelAlign.trx.ref_block_num = refblocknum
@@ -226,9 +227,9 @@
                 }
               ],
               data: {
-                from: 'eosio.token',
+                from: 'samsamsamsam',
                 to: 'eosio',
-                quantity: '11.0000 EOS',
+                quantity: '12.0000 EOS',
                 memo: 'By Sam'
               }
             }
@@ -248,10 +249,9 @@
         }
         this.$store.state.Counter.eos.getTableRows(proposalpara).then(rel => {
           for (var proposalitem in rel.rows) {
-            this.formProposal.packed_transaction = rel.rows[proposalitem].packed_transaction
-            console.log(rel.rows[proposalitem].packed_transaction)
-            this.formProposal.proposal_name = rel.rows[proposalitem].proposal_name
-            console.log(rel.rows[proposalitem].proposal_name)
+            if (rel.rows[proposalitem].proposal_name === this.formProposal.proposal_name) {
+              this.formProposal.packed_transaction = rel.rows[proposalitem].packed_transaction
+            }
           }
         })
         console.log(this.$store.state.Counter.eos)
@@ -265,7 +265,7 @@
           }
           this.$store.state.Counter.eos.abiBinToJson(abipara).then(rel => {
             console.log(rel.args)
-            this.formProposal.transaction = 'from: ' + rel.args.from + ' to: ' + rel.args.to + ' quantity: ' + rel.args.quantity + ' memo: ' + rel.args.memo
+            this.formProposal.transaction = '[from: ]' + rel.args.from + '[ to: ]' + rel.args.to + '[ quantity: ]' + rel.args.quantity + '[ memo: ]' + rel.args.memo
           })
         })
       },
