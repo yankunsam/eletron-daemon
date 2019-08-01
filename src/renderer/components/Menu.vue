@@ -2,14 +2,8 @@
 <div>
   <el-container>
     <el-header height="60px">
-      <el-row>
-        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple-light">
 
             <el-switch
-            style="display: block;height: 60px"
             v-model="englishDefault"
             active-color="#13ce66"
             inactive-color="#ff4949"
@@ -19,9 +13,6 @@
             @change="languageSelect()">
           </el-switch>
 
-          </div>
-</el-col>
-</el-row>
 
     </el-header>
     <el-container>
@@ -101,6 +92,8 @@ export default {
     color: #333;
     text-align: center;
     line-height: 60px;
+    border: solid;
+    position: relative;
   }
 
   .el-aside {
@@ -157,6 +150,13 @@ export default {
   }
   .el-switch {
     background-color: #B3C0D1;
-    height: 36px;
+    /* border: solid; */
+    position: absolute;
+    top: 18px;
+    height: 20px;
+    right: 10px;
+  }
+  .el-switch__label{
+    color: red;
   }
 </style>
